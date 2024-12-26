@@ -27,19 +27,147 @@ public class MainScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlTopBar = new javax.swing.JPanel();
+        pnlHomeTab = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        pnlProductTab = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        pnlControlTab = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        pnlSearchBar = new javax.swing.JPanel();
+        lblBackArrow = new javax.swing.JLabel();
+        lblFrontArrow = new javax.swing.JLabel();
+        lblRefresh = new javax.swing.JLabel();
+        textFieldSearchBar = new javax.swing.JTextField();
+        lblHomeBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBounds(new java.awt.Rectangle(40, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTopBar.setBackground(new java.awt.Color(153, 255, 255));
+        pnlTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlTopBar.setMaximumSize(new java.awt.Dimension(1280, 59));
         pnlTopBar.setMinimumSize(new java.awt.Dimension(1280, 59));
         pnlTopBar.setPreferredSize(new java.awt.Dimension(1280, 59));
         pnlTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnlTopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 50));
+
+        pnlHomeTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setText("Home");
+
+        javax.swing.GroupLayout pnlHomeTabLayout = new javax.swing.GroupLayout(pnlHomeTab);
+        pnlHomeTab.setLayout(pnlHomeTabLayout);
+        pnlHomeTabLayout.setHorizontalGroup(
+            pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHomeTabLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+        pnlHomeTabLayout.setVerticalGroup(
+            pnlHomeTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHomeTabLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
+        pnlTopBar.add(pnlHomeTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 30));
+
+        pnlProductTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setText("Product");
+
+        javax.swing.GroupLayout pnlProductTabLayout = new javax.swing.GroupLayout(pnlProductTab);
+        pnlProductTab.setLayout(pnlProductTabLayout);
+        pnlProductTabLayout.setHorizontalGroup(
+            pnlProductTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlProductTabLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel2)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        pnlProductTabLayout.setVerticalGroup(
+            pnlProductTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProductTabLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap())
+        );
+
+        pnlTopBar.add(pnlProductTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 150, -1));
+
+        pnlControlTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel3.setText("Control");
+
+        javax.swing.GroupLayout pnlControlTabLayout = new javax.swing.GroupLayout(pnlControlTab);
+        pnlControlTab.setLayout(pnlControlTabLayout);
+        pnlControlTabLayout.setHorizontalGroup(
+            pnlControlTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlTabLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel3)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        pnlControlTabLayout.setVerticalGroup(
+            pnlControlTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlTopBar.add(pnlControlTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 160, -1));
+
+        getContentPane().add(pnlTopBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
+
+        pnlSearchBar.setBackground(new java.awt.Color(255, 255, 255));
+        pnlSearchBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblBackArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/backArrow.png"))); // NOI18N
+
+        lblFrontArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/frontArrow.png"))); // NOI18N
+
+        lblRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/refresh.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlSearchBarLayout = new javax.swing.GroupLayout(pnlSearchBar);
+        pnlSearchBar.setLayout(pnlSearchBarLayout);
+        pnlSearchBarLayout.setHorizontalGroup(
+            pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSearchBarLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblBackArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFrontArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textFieldSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 1138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        pnlSearchBarLayout.setVerticalGroup(
+            pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblBackArrow, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlSearchBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFrontArrow, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addGroup(pnlSearchBarLayout.createSequentialGroup()
+                        .addComponent(textFieldSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        getContentPane().add(pnlSearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 40));
+
+        lblHomeBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/HomeBackground.png"))); // NOI18N
+        getContentPane().add(lblHomeBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,6 +208,18 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblBackArrow;
+    private javax.swing.JLabel lblFrontArrow;
+    private javax.swing.JLabel lblHomeBackground;
+    private javax.swing.JLabel lblRefresh;
+    private javax.swing.JPanel pnlControlTab;
+    private javax.swing.JPanel pnlHomeTab;
+    private javax.swing.JPanel pnlProductTab;
+    private javax.swing.JPanel pnlSearchBar;
     private javax.swing.JPanel pnlTopBar;
+    private javax.swing.JTextField textFieldSearchBar;
     // End of variables declaration//GEN-END:variables
 }
