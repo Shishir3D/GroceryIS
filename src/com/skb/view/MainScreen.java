@@ -57,8 +57,9 @@ public class MainScreen extends javax.swing.JFrame {
         tfProductPrice = new javax.swing.JTextField();
         tfProductId = new javax.swing.JTextField();
         tfProductWeight = new javax.swing.JTextField();
-        tfProductUnit = new javax.swing.JTextField();
         tfProductQuantity = new javax.swing.JTextField();
+        tfProductUnit = new javax.swing.JTextField();
+        tfProductSupplier = new javax.swing.JTextField();
         btnAddIt = new javax.swing.JButton();
         lblProductName = new javax.swing.JLabel();
         lblProductPrice = new javax.swing.JLabel();
@@ -66,12 +67,28 @@ public class MainScreen extends javax.swing.JFrame {
         lblProductId = new javax.swing.JLabel();
         lblProductWeight = new javax.swing.JLabel();
         lblProductUnit = new javax.swing.JLabel();
+        lblProductSupplier = new javax.swing.JLabel();
+        pnlRemoveModeSelected = new javax.swing.JPanel();
+        tfProductName2 = new javax.swing.JTextField();
+        lblAddAProduct2 = new javax.swing.JLabel();
+        lblProductName2 = new javax.swing.JLabel();
+        pnlUpdateModeSelected = new javax.swing.JPanel();
+        lblAddAProduct1 = new javax.swing.JLabel();
+        tfProductName1 = new javax.swing.JTextField();
+        tfProductPrice1 = new javax.swing.JTextField();
+        tfProductId1 = new javax.swing.JTextField();
+        tfProductWeight1 = new javax.swing.JTextField();
+        tfProductUnit1 = new javax.swing.JTextField();
+        tfProductQuantity1 = new javax.swing.JTextField();
+        btnAddIt1 = new javax.swing.JButton();
+        lblProductName1 = new javax.swing.JLabel();
+        lblProductPrice1 = new javax.swing.JLabel();
+        lblProductQuantity1 = new javax.swing.JLabel();
+        lblProductId1 = new javax.swing.JLabel();
+        lblProductWeight1 = new javax.swing.JLabel();
+        lblProductUnit1 = new javax.swing.JLabel();
         pnlNoModeSelected = new javax.swing.JPanel();
         lblNoModeSelectedBackground = new javax.swing.JLabel();
-        pnlRemoveModeSelected = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        pnlUpdateModeSelected = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         pnlProductScreen = new javax.swing.JPanel();
         lblProductScreenProductsTable = new javax.swing.JLabel();
         tableScrollPane = new javax.swing.JScrollPane();
@@ -240,132 +257,175 @@ public class MainScreen extends javax.swing.JFrame {
         pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlAddModeSelected.setBackground(new java.awt.Color(255, 255, 255));
+        pnlAddModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAddAProduct.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         lblAddAProduct.setText("ADD a Product");
-
-        tfProductName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfProductNameActionPerformed(evt);
-            }
-        });
-
-        tfProductPrice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfProductPriceActionPerformed(evt);
-            }
-        });
-
-        tfProductId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfProductIdActionPerformed(evt);
-            }
-        });
-
-        tfProductWeight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfProductWeightActionPerformed(evt);
-            }
-        });
-
-        tfProductUnit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfProductUnitActionPerformed(evt);
-            }
-        });
-
-        tfProductQuantity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfProductQuantityActionPerformed(evt);
-            }
-        });
+        pnlAddModeSelected.add(lblAddAProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
+        pnlAddModeSelected.add(tfProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 140, 48));
+        pnlAddModeSelected.add(tfProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 140, 48));
+        pnlAddModeSelected.add(tfProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 140, 48));
 
         btnAddIt.setText("ADD IT");
+        btnAddIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddItActionPerformed(evt);
+            }
+        });
+        pnlAddModeSelected.add(btnAddIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 176, 57));
 
         lblProductName.setText("Name");
+        pnlAddModeSelected.add(lblProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
 
         lblProductPrice.setText("Price");
+        pnlAddModeSelected.add(lblProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
 
         lblProductQuantity.setText("Quantity");
+        pnlAddModeSelected.add(lblProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
 
         lblProductId.setText("Product ID");
+        pnlAddModeSelected.add(lblProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
 
         lblProductWeight.setText("Weight");
+        pnlAddModeSelected.add(lblProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
 
         lblProductUnit.setText("Unit of Weight");
+        pnlAddModeSelected.add(lblProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
 
-        javax.swing.GroupLayout pnlAddModeSelectedLayout = new javax.swing.GroupLayout(pnlAddModeSelected);
-        pnlAddModeSelected.setLayout(pnlAddModeSelectedLayout);
-        pnlAddModeSelectedLayout.setHorizontalGroup(
-            pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAddModeSelectedLayout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductId))
-                .addGap(70, 70, 70)
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductName))
-                .addGap(77, 77, 77)
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductPrice))
-                .addGap(65, 65, 65)
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProductQuantity)
-                    .addComponent(tfProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(212, 212, 212))
-            .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
-                        .addGap(401, 401, 401)
-                        .addComponent(lblAddAProduct))
-                    .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfProductWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblProductWeight))
-                        .addGap(134, 134, 134)
-                        .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblProductUnit)
-                            .addComponent(tfProductUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
-                        .addGap(459, 459, 459)
-                        .addComponent(btnAddIt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        lblProductSupplier.setText("Supplier");
+        pnlAddModeSelected.add(lblProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
+
+        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        lblAddAProduct2.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
+        lblAddAProduct2.setText("REMOVE a Product");
+
+        lblProductName2.setText("Product Id");
+
+        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
+        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
+        pnlRemoveModeSelectedLayout.setHorizontalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addContainerGap(358, Short.MAX_VALUE)
+                .addComponent(lblAddAProduct2)
+                .addGap(366, 366, 366))
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(472, 472, 472)
+                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(506, 506, 506)
+                .addComponent(lblProductName2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnlAddModeSelectedLayout.setVerticalGroup(
-            pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lblAddAProduct)
-                .addGap(66, 66, 66)
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProductName)
-                    .addComponent(lblProductPrice)
-                    .addComponent(lblProductQuantity)
-                    .addComponent(lblProductId))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProductWeight, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblProductUnit, javax.swing.GroupLayout.Alignment.TRAILING))
+        pnlRemoveModeSelectedLayout.setVerticalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(lblAddAProduct2)
+                .addGap(123, 123, 123)
+                .addComponent(lblProductName2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfProductUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProductWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+
+        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        lblAddAProduct1.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
+        lblAddAProduct1.setText("UPDATE a Product");
+
+        btnAddIt1.setText("UPDATE IT");
+
+        lblProductName1.setText("Name");
+
+        lblProductPrice1.setText("Price");
+
+        lblProductQuantity1.setText("Quantity");
+
+        lblProductId1.setText("Product ID");
+
+        lblProductWeight1.setText("Weight");
+
+        lblProductUnit1.setText("Unit of Weight");
+
+        javax.swing.GroupLayout pnlUpdateModeSelectedLayout = new javax.swing.GroupLayout(pnlUpdateModeSelected);
+        pnlUpdateModeSelected.setLayout(pnlUpdateModeSelectedLayout);
+        pnlUpdateModeSelectedLayout.setHorizontalGroup(
+            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateModeSelectedLayout.createSequentialGroup()
+                .addContainerGap(166, Short.MAX_VALUE)
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfProductId1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProductId1))
+                .addGap(70, 70, 70)
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfProductName1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProductName1))
+                .addGap(77, 77, 77)
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfProductPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProductPrice1))
+                .addGap(65, 65, 65)
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblProductQuantity1)
+                    .addComponent(tfProductQuantity1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(212, 212, 212))
+            .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                        .addGap(344, 344, 344)
+                        .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfProductWeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblProductWeight1))
+                                .addGap(134, 134, 134)
+                                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblProductUnit1)
+                                    .addComponent(tfProductUnit1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblAddAProduct1)))
+                    .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                        .addGap(459, 459, 459)
+                        .addComponent(btnAddIt1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(392, Short.MAX_VALUE))
+        );
+        pnlUpdateModeSelectedLayout.setVerticalGroup(
+            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblAddAProduct1)
+                .addGap(66, 66, 66)
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProductName1)
+                    .addComponent(lblProductPrice1)
+                    .addComponent(lblProductQuantity1)
+                    .addComponent(lblProductId1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfProductPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfProductName1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfProductId1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfProductQuantity1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblProductWeight1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblProductUnit1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfProductUnit1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfProductWeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
-                .addComponent(btnAddIt, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddIt1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
 
-        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
 
         pnlNoModeSelected.setBackground(new java.awt.Color(148, 183, 58));
         pnlNoModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -374,52 +434,6 @@ public class MainScreen extends javax.swing.JFrame {
         pnlNoModeSelected.add(lblNoModeSelectedBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 490));
 
         pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        jLabel4.setText("remove mode");
-
-        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
-        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
-        pnlRemoveModeSelectedLayout.setHorizontalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(262, 262, 262)
-                .addComponent(jLabel4)
-                .addContainerGap(798, Short.MAX_VALUE))
-        );
-        pnlRemoveModeSelectedLayout.setVerticalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addContainerGap(307, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(165, 165, 165))
-        );
-
-        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        jLabel5.setText("update Mode");
-
-        javax.swing.GroupLayout pnlUpdateModeSelectedLayout = new javax.swing.GroupLayout(pnlUpdateModeSelected);
-        pnlUpdateModeSelected.setLayout(pnlUpdateModeSelectedLayout);
-        pnlUpdateModeSelectedLayout.setHorizontalGroup(
-            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
-            .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                    .addGap(552, 552, 552)
-                    .addComponent(jLabel5)
-                    .addContainerGap(515, Short.MAX_VALUE)))
-        );
-        pnlUpdateModeSelectedLayout.setVerticalGroup(
-            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-            .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                    .addGap(236, 236, 236)
-                    .addComponent(jLabel5)
-                    .addContainerGap(236, Short.MAX_VALUE)))
-        );
-
-        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
 
         javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
         pnlControlScreen.setLayout(pnlControlScreenLayout);
@@ -567,29 +581,75 @@ public class MainScreen extends javax.swing.JFrame {
         pnlControlScreen.setVisible(true);
     }//GEN-LAST:event_pnlControlTabMouseClicked
 
-    private void tfProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductNameActionPerformed
+    private void btnAddItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfProductNameActionPerformed
+        // Validate Product Supplier
+        if (tfProductSupplier.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductSupplier.requestFocus();
+            return;
+        }
 
-    private void tfProductPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductPriceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfProductPriceActionPerformed
+        // Validate Product Quantity
+        try {
+            int quantity = Integer.parseInt(tfProductQuantity.getText().trim());
+            if (quantity <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Product Quantity must be a positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductQuantity.requestFocus();
+            return;
+        }
 
-    private void tfProductIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfProductIdActionPerformed
+        // Validate Product Unit
+        if (tfProductUnit.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Product Unit cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductUnit.requestFocus();
+            return;
+        }
 
-    private void tfProductWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductWeightActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfProductWeightActionPerformed
+        // Validate Product Weight
+        try {
+            double weight = Double.parseDouble(tfProductWeight.getText().trim());
+            if (weight <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Product Weight must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductWeight.requestFocus();
+            return;
+        }
 
-    private void tfProductUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductUnitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfProductUnitActionPerformed
+        // Validate Product ID
+        if (tfProductId.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductId.requestFocus();
+            return;
+        }
 
-    private void tfProductQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductQuantityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfProductQuantityActionPerformed
+        // Validate Product Price
+        try {
+            double price = Double.parseDouble(tfProductPrice.getText().trim());
+            if (price <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Product Price must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductPrice.requestFocus();
+            return;
+        }
+
+        // Validate Product Name
+        if (tfProductName.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Product Name cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductName.requestFocus();
+            return;
+        }
+
+        // If all validations pass
+        JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);        
+    }//GEN-LAST:event_btnAddItActionPerformed
 
     // Method to add product data and populate the table
     private void registerProduct(ProductModel item) {
@@ -648,25 +708,34 @@ public class MainScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddIt;
+    private javax.swing.JButton btnAddIt1;
     private javax.swing.JComboBox<String> comboBoxModeSelector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblAddAProduct;
+    private javax.swing.JLabel lblAddAProduct1;
+    private javax.swing.JLabel lblAddAProduct2;
     private javax.swing.JLabel lblBackArrow;
     private javax.swing.JLabel lblControlScreenMode;
     private javax.swing.JLabel lblFrontArrow;
     private javax.swing.JLabel lblHomeBackground;
     private javax.swing.JLabel lblNoModeSelectedBackground;
     private javax.swing.JLabel lblProductId;
+    private javax.swing.JLabel lblProductId1;
     private javax.swing.JLabel lblProductName;
+    private javax.swing.JLabel lblProductName1;
+    private javax.swing.JLabel lblProductName2;
     private javax.swing.JLabel lblProductPrice;
+    private javax.swing.JLabel lblProductPrice1;
     private javax.swing.JLabel lblProductQuantity;
+    private javax.swing.JLabel lblProductQuantity1;
     private javax.swing.JLabel lblProductScreenProductsTable;
+    private javax.swing.JLabel lblProductSupplier;
     private javax.swing.JLabel lblProductUnit;
+    private javax.swing.JLabel lblProductUnit1;
     private javax.swing.JLabel lblProductWeight;
+    private javax.swing.JLabel lblProductWeight1;
     private javax.swing.JLabel lblRefresh;
     private javax.swing.JPanel pnlAddModeSelected;
     private javax.swing.JPanel pnlAllControlPanels;
@@ -686,10 +755,18 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.JTextField textFieldSearchBar;
     private javax.swing.JTextField tfProductId;
+    private javax.swing.JTextField tfProductId1;
     private javax.swing.JTextField tfProductName;
+    private javax.swing.JTextField tfProductName1;
+    private javax.swing.JTextField tfProductName2;
     private javax.swing.JTextField tfProductPrice;
+    private javax.swing.JTextField tfProductPrice1;
     private javax.swing.JTextField tfProductQuantity;
+    private javax.swing.JTextField tfProductQuantity1;
+    private javax.swing.JTextField tfProductSupplier;
     private javax.swing.JTextField tfProductUnit;
+    private javax.swing.JTextField tfProductUnit1;
     private javax.swing.JTextField tfProductWeight;
+    private javax.swing.JTextField tfProductWeight1;
     // End of variables declaration//GEN-END:variables
 }
