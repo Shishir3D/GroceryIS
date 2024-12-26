@@ -1,18 +1,24 @@
 package com.skb.view;
+import com.skb.model.ProductModel;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author shishir
  */
 public class MainScreen extends javax.swing.JFrame {
+    
+    private List<ProductModel> productList;
 
     /**
      * Creates new form MainScreen
      */
     public MainScreen() {
         initComponents();
+        initializeData();
         
         //My Code
         setTitle("Shishir Khadya Bhandar");    
@@ -41,6 +47,12 @@ public class MainScreen extends javax.swing.JFrame {
         lblRefresh = new javax.swing.JLabel();
         textFieldSearchBar = new javax.swing.JTextField();
         pnlAllScreens = new javax.swing.JPanel();
+        pnlProductScreen = new javax.swing.JPanel();
+        lblProductScreenProductsTable = new javax.swing.JLabel();
+        tableScrollPane = new javax.swing.JScrollPane();
+        productTable = new javax.swing.JTable();
+        pnlHomeScreen = new javax.swing.JPanel();
+        lblHomeBackground = new javax.swing.JLabel();
         pnlControlScreen = new javax.swing.JPanel();
         lblControlScreenMode = new javax.swing.JLabel();
         comboBoxModeSelector = new javax.swing.JComboBox<>();
@@ -51,12 +63,6 @@ public class MainScreen extends javax.swing.JFrame {
         pnlUpdateModeSelected = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         pnlAddModeSelected = new javax.swing.JPanel();
-        pnlProductScreen = new javax.swing.JPanel();
-        lblProductScreenProductsTable = new javax.swing.JLabel();
-        productsTable = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        pnlHomeScreen = new javax.swing.JPanel();
-        lblHomeBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("mainScreenFrame");
@@ -202,6 +208,69 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlAllScreens.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnlProductScreen.setBackground(new java.awt.Color(255, 255, 255));
+        pnlProductScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblProductScreenProductsTable.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
+        lblProductScreenProductsTable.setText("Products Table");
+        pnlProductScreen.add(lblProductScreenProductsTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 49, -1, -1));
+
+        tableScrollPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tableScrollPane.setEnabled(false);
+        tableScrollPane.setFocusable(false);
+
+        productTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Name", "Price", "Quantity", "Supplier", "Weight", "Unit"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableScrollPane.setViewportView(productTable);
+        if (productTable.getColumnModel().getColumnCount() > 0) {
+            productTable.getColumnModel().getColumn(0).setResizable(false);
+            productTable.getColumnModel().getColumn(1).setResizable(false);
+            productTable.getColumnModel().getColumn(2).setResizable(false);
+            productTable.getColumnModel().getColumn(3).setResizable(false);
+            productTable.getColumnModel().getColumn(4).setResizable(false);
+            productTable.getColumnModel().getColumn(5).setResizable(false);
+            productTable.getColumnModel().getColumn(6).setResizable(false);
+        }
+
+        pnlProductScreen.add(tableScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 142, 1280, 488));
+
+        pnlAllScreens.add(pnlProductScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        lblHomeBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/HomeBackground.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlHomeScreenLayout = new javax.swing.GroupLayout(pnlHomeScreen);
+        pnlHomeScreen.setLayout(pnlHomeScreenLayout);
+        pnlHomeScreenLayout.setHorizontalGroup(
+            pnlHomeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHomeScreenLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblHomeBackground)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnlHomeScreenLayout.setVerticalGroup(
+            pnlHomeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHomeScreenLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblHomeBackground)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pnlAllScreens.add(pnlHomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
+
         lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         lblControlScreenMode.setText("Mode:");
 
@@ -316,54 +385,6 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlAllScreens.add(pnlControlScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
 
-        pnlProductScreen.setBackground(new java.awt.Color(255, 255, 255));
-        pnlProductScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblProductScreenProductsTable.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
-        lblProductScreenProductsTable.setText("Products Table");
-        pnlProductScreen.add(lblProductScreenProductsTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 49, -1, -1));
-
-        productsTable.setEnabled(false);
-        productsTable.setFocusable(false);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        productsTable.setViewportView(jTable1);
-
-        pnlProductScreen.add(productsTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 142, 1280, 488));
-
-        pnlAllScreens.add(pnlProductScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        lblHomeBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/HomeBackground.png"))); // NOI18N
-
-        javax.swing.GroupLayout pnlHomeScreenLayout = new javax.swing.GroupLayout(pnlHomeScreen);
-        pnlHomeScreen.setLayout(pnlHomeScreenLayout);
-        pnlHomeScreenLayout.setHorizontalGroup(
-            pnlHomeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHomeScreenLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblHomeBackground)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        pnlHomeScreenLayout.setVerticalGroup(
-            pnlHomeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHomeScreenLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblHomeBackground)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        pnlAllScreens.add(pnlHomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
-
         getContentPane().add(pnlAllScreens, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1280, 630));
 
         pack();
@@ -375,7 +396,7 @@ public class MainScreen extends javax.swing.JFrame {
         pnlProductScreen.setVisible(false);
         pnlControlScreen.setVisible(false);
     }//GEN-LAST:event_pnlHomeTabMouseClicked
-
+ 
     private void pnlProductTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlProductTabMouseClicked
         // TODO add your handling code here:
         pnlHomeScreen.setVisible(false);
@@ -418,6 +439,26 @@ public class MainScreen extends javax.swing.JFrame {
         pnlControlScreen.setVisible(true);
     }//GEN-LAST:event_pnlControlTabMouseClicked
 
+    // Method to add product data and populate the table
+    private void registerProduct(ProductModel item) {
+        productList.add(item);
+        DefaultTableModel model = (DefaultTableModel) productTable.getModel();
+        model.addRow(new Object[]{
+            item.getProductId(),item.getProductName(), item.getPrice(), item.getQuantity(), item.getSupplier(), item.getWeight(), item.getWeightUnit()
+        });
+    }
+    
+    // Method to initialize data, including student list and table
+    private void initializeData() {
+        productList = new LinkedList();
+        registerProduct(new ProductModel(1,"Rice", "20", "kg", "Newari", 2500, 10));
+        registerProduct(new ProductModel(2, "Wheat Flour", "5", "kg", "Organic Farms", 200, 5));
+        registerProduct(new ProductModel(3, "Sugar", "1", "kg", "Sweet Delight", 80, 20));
+        registerProduct(new ProductModel(4, "Milk", "1", "Litre", "Dairy Fresh", 50, 15));
+        registerProduct(new ProductModel(5, "Eggs", "1", "Dozen", "Happy Hens", 80, 30));
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -460,7 +501,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBackArrow;
     private javax.swing.JLabel lblControlScreenMode;
     private javax.swing.JLabel lblFrontArrow;
@@ -481,7 +521,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel pnlSearchBar;
     private javax.swing.JPanel pnlTopBar;
     private javax.swing.JPanel pnlUpdateModeSelected;
-    private javax.swing.JScrollPane productsTable;
+    private javax.swing.JTable productTable;
+    private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.JTextField textFieldSearchBar;
     // End of variables declaration//GEN-END:variables
 }
