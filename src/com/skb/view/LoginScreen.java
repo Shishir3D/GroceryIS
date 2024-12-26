@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.skb.view;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -15,6 +13,10 @@ public class LoginScreen extends javax.swing.JFrame {
      */
     public LoginScreen() {
         initComponents();
+        
+        //My Code
+        setTitle("Login Screen");    
+        setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
     }
 
     /**
@@ -34,9 +36,12 @@ public class LoginScreen extends javax.swing.JFrame {
         textFieldLoginScreenPassword = new javax.swing.JTextField();
         btnLoginScreenLogin = new javax.swing.JButton();
         lblLoginScreenForgotPassword = new javax.swing.JLabel();
+        lblLoginScreenPasswordIsIncorrect = new javax.swing.JLabel();
+        lblLoginScreenUsernameIsIncorrect = new javax.swing.JLabel();
         lblLoginScreenBgImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
@@ -55,23 +60,31 @@ public class LoginScreen extends javax.swing.JFrame {
 
         lblLoginScreenPassword.setForeground(new java.awt.Color(51, 51, 51));
         lblLoginScreenPassword.setText("Password");
-        pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
-
-        textFieldLoginScreenUsername.setText(" ");
-        textFieldLoginScreenUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldLoginScreenUsernameActionPerformed(evt);
-            }
-        });
+        pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
         pnlLoginScreenForegroundWhiteRectangle.add(textFieldLoginScreenUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 260, 50));
-        pnlLoginScreenForegroundWhiteRectangle.add(textFieldLoginScreenPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 260, 50));
+        pnlLoginScreenForegroundWhiteRectangle.add(textFieldLoginScreenPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 260, 50));
 
         btnLoginScreenLogin.setText("LOGIN");
-        pnlLoginScreenForegroundWhiteRectangle.add(btnLoginScreenLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 250, 40));
+        btnLoginScreenLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginScreenLoginActionPerformed(evt);
+            }
+        });
+        pnlLoginScreenForegroundWhiteRectangle.add(btnLoginScreenLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 250, 40));
 
         lblLoginScreenForgotPassword.setForeground(new java.awt.Color(153, 153, 153));
         lblLoginScreenForgotPassword.setText("forgot password?");
-        pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenForgotPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
+        pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenForgotPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, -1));
+
+        lblLoginScreenPasswordIsIncorrect.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblLoginScreenPasswordIsIncorrect.setForeground(new java.awt.Color(255, 255, 255));
+        lblLoginScreenPasswordIsIncorrect.setText("password is incorrect");
+        pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenPasswordIsIncorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
+
+        lblLoginScreenUsernameIsIncorrect.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblLoginScreenUsernameIsIncorrect.setForeground(new java.awt.Color(255, 255, 255));
+        lblLoginScreenUsernameIsIncorrect.setText("username is incorrect");
+        pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenUsernameIsIncorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         getContentPane().add(pnlLoginScreenForegroundWhiteRectangle, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 380, 530));
 
@@ -82,9 +95,44 @@ public class LoginScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textFieldLoginScreenUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldLoginScreenUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldLoginScreenUsernameActionPerformed
+    private void btnLoginScreenLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginScreenLoginActionPerformed
+        // Sample data for validation (replace this with your actual data source)
+        String validUsername = "admin";
+        String validPassword = "admin";
+
+        // Retrieve input from username and password fields
+        String enteredUsername = textFieldLoginScreenUsername.getText();
+        String enteredPassword = textFieldLoginScreenPassword.getText();
+        
+        // Reset error labels
+        lblLoginScreenUsernameIsIncorrect.setText("");
+        lblLoginScreenPasswordIsIncorrect.setText("");
+
+        // Validate username
+        if (enteredUsername.equals(validUsername) == false) {
+            lblLoginScreenUsernameIsIncorrect.setText("Username is incorrect");
+            lblLoginScreenUsernameIsIncorrect.setForeground(java.awt.Color.RED);
+        }
+
+        // Validate password
+        if (enteredPassword.equals(validPassword) == false) {
+            lblLoginScreenPasswordIsIncorrect.setText("Password is incorrect");
+            lblLoginScreenPasswordIsIncorrect.setForeground(java.awt.Color.RED);
+        }
+
+        // Check if both username and password are correct
+        if (enteredUsername.equals(validUsername) && enteredPassword.equals(validPassword)) {
+            // Logic for successful login (navigate to the next screen or show a success message)
+            javax.swing.JOptionPane.showMessageDialog(this, "Login successful!", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
+            // Open MainScreen JFrame
+            MainScreen mainScreen = new MainScreen();
+            mainScreen.setVisible(true);
+
+            // Close the Login Screen JFrame
+            this.dispose(); // Dispose of the current JFrame
+        }
+    }//GEN-LAST:event_btnLoginScreenLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,12 +160,12 @@ public class LoginScreen extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoginScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginScreen().setVisible(true);
-            }
+        }
         });
     }
 
@@ -127,7 +175,9 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblLoginScreenForgotPassword;
     private javax.swing.JLabel lblLoginScreenLoginText;
     private javax.swing.JLabel lblLoginScreenPassword;
+    private javax.swing.JLabel lblLoginScreenPasswordIsIncorrect;
     private javax.swing.JLabel lblLoginScreenUsername;
+    private javax.swing.JLabel lblLoginScreenUsernameIsIncorrect;
     private javax.swing.JPanel pnlLoginScreenForegroundWhiteRectangle;
     private javax.swing.JTextField textFieldLoginScreenPassword;
     private javax.swing.JTextField textFieldLoginScreenUsername;
