@@ -38,6 +38,20 @@ public class MainScreen extends javax.swing.JFrame {
         lblFrontArrow = new javax.swing.JLabel();
         lblRefresh = new javax.swing.JLabel();
         textFieldSearchBar = new javax.swing.JTextField();
+        pnlAllScreens = new javax.swing.JPanel();
+        pnlControlScreen = new javax.swing.JPanel();
+        lblControlScreenMode = new javax.swing.JLabel();
+        comboBoxModeSelector = new javax.swing.JComboBox<>();
+        pnlAllControlPanels = new javax.swing.JPanel();
+        pnlRemoveModeSelected = new javax.swing.JPanel();
+        pnlUpdateModeSelected = new javax.swing.JPanel();
+        pnlAddModeSelected = new javax.swing.JPanel();
+        pnlNoModeSelected = new javax.swing.JPanel();
+        pnlProductScreen = new javax.swing.JPanel();
+        lblProductScreenProductsTable = new javax.swing.JLabel();
+        productsTable = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        pnlHomeScreen = new javax.swing.JPanel();
         lblHomeBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,6 +70,11 @@ public class MainScreen extends javax.swing.JFrame {
         pnlTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlHomeTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlHomeTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlHomeTabMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("Home");
 
@@ -79,6 +98,11 @@ public class MainScreen extends javax.swing.JFrame {
         pnlTopBar.add(pnlHomeTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 30));
 
         pnlProductTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlProductTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlProductTabMouseClicked(evt);
+            }
+        });
 
         jLabel2.setText("Product");
 
@@ -102,6 +126,11 @@ public class MainScreen extends javax.swing.JFrame {
         pnlTopBar.add(pnlProductTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 150, -1));
 
         pnlControlTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlControlTab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlControlTabMouseClicked(evt);
+            }
+        });
 
         jLabel3.setText("Control");
 
@@ -166,11 +195,176 @@ public class MainScreen extends javax.swing.JFrame {
 
         getContentPane().add(pnlSearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 40));
 
+        pnlAllScreens.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        lblControlScreenMode.setText("Mode:");
+
+        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxModeSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxModeSelectorActionPerformed(evt);
+            }
+        });
+
+        pnlAllControlPanels.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
+        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
+        pnlRemoveModeSelectedLayout.setHorizontalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1150, Short.MAX_VALUE)
+        );
+        pnlRemoveModeSelectedLayout.setVerticalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
+
+        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        javax.swing.GroupLayout pnlUpdateModeSelectedLayout = new javax.swing.GroupLayout(pnlUpdateModeSelected);
+        pnlUpdateModeSelected.setLayout(pnlUpdateModeSelectedLayout);
+        pnlUpdateModeSelectedLayout.setHorizontalGroup(
+            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1150, Short.MAX_VALUE)
+        );
+        pnlUpdateModeSelectedLayout.setVerticalGroup(
+            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
+
+        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        javax.swing.GroupLayout pnlAddModeSelectedLayout = new javax.swing.GroupLayout(pnlAddModeSelected);
+        pnlAddModeSelected.setLayout(pnlAddModeSelectedLayout);
+        pnlAddModeSelectedLayout.setHorizontalGroup(
+            pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1150, Short.MAX_VALUE)
+        );
+        pnlAddModeSelectedLayout.setVerticalGroup(
+            pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
+
+        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        javax.swing.GroupLayout pnlNoModeSelectedLayout = new javax.swing.GroupLayout(pnlNoModeSelected);
+        pnlNoModeSelected.setLayout(pnlNoModeSelectedLayout);
+        pnlNoModeSelectedLayout.setHorizontalGroup(
+            pnlNoModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1150, Short.MAX_VALUE)
+        );
+        pnlNoModeSelectedLayout.setVerticalGroup(
+            pnlNoModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
+
+        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
+        pnlControlScreen.setLayout(pnlControlScreenLayout);
+        pnlControlScreenLayout.setHorizontalGroup(
+            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblControlScreenMode)
+                .addGap(18, 18, 18)
+                .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+        pnlControlScreenLayout.setVerticalGroup(
+            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblControlScreenMode)
+                    .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        pnlAllScreens.add(pnlControlScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
+
+        pnlProductScreen.setBackground(new java.awt.Color(255, 255, 255));
+        pnlProductScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblProductScreenProductsTable.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
+        lblProductScreenProductsTable.setText("Products Table");
+        pnlProductScreen.add(lblProductScreenProductsTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 49, -1, -1));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        productsTable.setViewportView(jTable1);
+
+        pnlProductScreen.add(productsTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 142, 1280, 488));
+
+        pnlAllScreens.add(pnlProductScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         lblHomeBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/HomeBackground.png"))); // NOI18N
-        getContentPane().add(lblHomeBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
+
+        javax.swing.GroupLayout pnlHomeScreenLayout = new javax.swing.GroupLayout(pnlHomeScreen);
+        pnlHomeScreen.setLayout(pnlHomeScreenLayout);
+        pnlHomeScreenLayout.setHorizontalGroup(
+            pnlHomeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHomeScreenLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblHomeBackground)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnlHomeScreenLayout.setVerticalGroup(
+            pnlHomeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHomeScreenLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblHomeBackground)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        pnlAllScreens.add(pnlHomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
+
+        getContentPane().add(pnlAllScreens, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1280, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pnlHomeTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHomeTabMouseClicked
+        // TODO add your handling code here:
+        pnlHomeScreen.setVisible(true);
+        pnlProductScreen.setVisible(false);
+        pnlControlScreen.setVisible(false);
+    }//GEN-LAST:event_pnlHomeTabMouseClicked
+
+    private void pnlProductTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlProductTabMouseClicked
+        // TODO add your handling code here:
+        pnlHomeScreen.setVisible(false);
+        pnlProductScreen.setVisible(true);
+        pnlControlScreen.setVisible(false);
+    }//GEN-LAST:event_pnlProductTabMouseClicked
+
+    private void comboBoxModeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxModeSelectorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxModeSelectorActionPerformed
+
+    private void pnlControlTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlControlTabMouseClicked
+        // TODO add your handling code here:
+        pnlHomeScreen.setVisible(false);
+        pnlProductScreen.setVisible(false);
+        pnlControlScreen.setVisible(true);
+    }//GEN-LAST:event_pnlControlTabMouseClicked
 
     /**
      * @param args the command line arguments
@@ -208,18 +402,32 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBoxModeSelector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBackArrow;
+    private javax.swing.JLabel lblControlScreenMode;
     private javax.swing.JLabel lblFrontArrow;
     private javax.swing.JLabel lblHomeBackground;
+    private javax.swing.JLabel lblProductScreenProductsTable;
     private javax.swing.JLabel lblRefresh;
+    private javax.swing.JPanel pnlAddModeSelected;
+    private javax.swing.JPanel pnlAllControlPanels;
+    private javax.swing.JPanel pnlAllScreens;
+    private javax.swing.JPanel pnlControlScreen;
     private javax.swing.JPanel pnlControlTab;
+    private javax.swing.JPanel pnlHomeScreen;
     private javax.swing.JPanel pnlHomeTab;
+    private javax.swing.JPanel pnlNoModeSelected;
+    private javax.swing.JPanel pnlProductScreen;
     private javax.swing.JPanel pnlProductTab;
+    private javax.swing.JPanel pnlRemoveModeSelected;
     private javax.swing.JPanel pnlSearchBar;
     private javax.swing.JPanel pnlTopBar;
+    private javax.swing.JPanel pnlUpdateModeSelected;
+    private javax.swing.JScrollPane productsTable;
     private javax.swing.JTextField textFieldSearchBar;
     // End of variables declaration//GEN-END:variables
 }
