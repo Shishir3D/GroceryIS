@@ -1,4 +1,6 @@
 package com.skb.view;
+import javax.swing.*;
+import java.awt.event.*;
 
 /**
  *
@@ -43,10 +45,12 @@ public class MainScreen extends javax.swing.JFrame {
         lblControlScreenMode = new javax.swing.JLabel();
         comboBoxModeSelector = new javax.swing.JComboBox<>();
         pnlAllControlPanels = new javax.swing.JPanel();
-        pnlRemoveModeSelected = new javax.swing.JPanel();
-        pnlUpdateModeSelected = new javax.swing.JPanel();
-        pnlAddModeSelected = new javax.swing.JPanel();
         pnlNoModeSelected = new javax.swing.JPanel();
+        pnlRemoveModeSelected = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        pnlUpdateModeSelected = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        pnlAddModeSelected = new javax.swing.JPanel();
         pnlProductScreen = new javax.swing.JPanel();
         lblProductScreenProductsTable = new javax.swing.JLabel();
         productsTable = new javax.swing.JScrollPane();
@@ -55,6 +59,7 @@ public class MainScreen extends javax.swing.JFrame {
         lblHomeBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("mainScreenFrame");
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(40, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -200,7 +205,7 @@ public class MainScreen extends javax.swing.JFrame {
         lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         lblControlScreenMode.setText("Mode:");
 
-        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Mode", "ADD", "UPDATE", "REMOVE" }));
         comboBoxModeSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxModeSelectorActionPerformed(evt);
@@ -210,28 +215,61 @@ public class MainScreen extends javax.swing.JFrame {
         pnlAllControlPanels.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        javax.swing.GroupLayout pnlNoModeSelectedLayout = new javax.swing.GroupLayout(pnlNoModeSelected);
+        pnlNoModeSelected.setLayout(pnlNoModeSelectedLayout);
+        pnlNoModeSelectedLayout.setHorizontalGroup(
+            pnlNoModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1150, Short.MAX_VALUE)
+        );
+        pnlNoModeSelectedLayout.setVerticalGroup(
+            pnlNoModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+        );
+
+        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        jLabel4.setText("remove mode");
+
         javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
         pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
         pnlRemoveModeSelectedLayout.setHorizontalGroup(
             pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(262, 262, 262)
+                .addComponent(jLabel4)
+                .addContainerGap(798, Short.MAX_VALUE))
         );
         pnlRemoveModeSelectedLayout.setVerticalGroup(
             pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addContainerGap(307, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(165, 165, 165))
         );
 
         pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        jLabel5.setText("update Mode");
 
         javax.swing.GroupLayout pnlUpdateModeSelectedLayout = new javax.swing.GroupLayout(pnlUpdateModeSelected);
         pnlUpdateModeSelected.setLayout(pnlUpdateModeSelectedLayout);
         pnlUpdateModeSelectedLayout.setHorizontalGroup(
             pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1150, Short.MAX_VALUE)
+            .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                    .addGap(552, 552, 552)
+                    .addComponent(jLabel5)
+                    .addContainerGap(515, Short.MAX_VALUE)))
         );
         pnlUpdateModeSelectedLayout.setVerticalGroup(
             pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                    .addGap(236, 236, 236)
+                    .addComponent(jLabel5)
+                    .addContainerGap(236, Short.MAX_VALUE)))
         );
 
         pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
@@ -248,19 +286,6 @@ public class MainScreen extends javax.swing.JFrame {
         );
 
         pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        javax.swing.GroupLayout pnlNoModeSelectedLayout = new javax.swing.GroupLayout(pnlNoModeSelected);
-        pnlNoModeSelected.setLayout(pnlNoModeSelectedLayout);
-        pnlNoModeSelectedLayout.setHorizontalGroup(
-            pnlNoModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
-        );
-        pnlNoModeSelectedLayout.setVerticalGroup(
-            pnlNoModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-        );
-
-        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
 
         javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
         pnlControlScreen.setLayout(pnlControlScreenLayout);
@@ -297,6 +322,9 @@ public class MainScreen extends javax.swing.JFrame {
         lblProductScreenProductsTable.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
         lblProductScreenProductsTable.setText("Products Table");
         pnlProductScreen.add(lblProductScreenProductsTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 49, -1, -1));
+
+        productsTable.setEnabled(false);
+        productsTable.setFocusable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -357,6 +385,30 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void comboBoxModeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxModeSelectorActionPerformed
         // TODO add your handling code here:
+        String selectedOption = (String) comboBoxModeSelector.getSelectedItem();
+                
+        // hide all panels
+        pnlNoModeSelected.setVisible(false);
+        pnlRemoveModeSelected.setVisible(false);
+        pnlAddModeSelected.setVisible(false);
+        pnlUpdateModeSelected.setVisible(false);
+
+        // Show the selected panel
+        switch (selectedOption) {
+            case "No Mode":
+                pnlNoModeSelected.setVisible(true);
+                break;
+            case "REMOVE":
+                pnlRemoveModeSelected.setVisible(true);
+                break;
+            case "ADD":
+                pnlAddModeSelected.setVisible(true);
+                break;
+            case "UPDATE":
+                pnlUpdateModeSelected.setVisible(true);
+                break;
+        }
+        pack();
     }//GEN-LAST:event_comboBoxModeSelectorActionPerformed
 
     private void pnlControlTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlControlTabMouseClicked
@@ -406,6 +458,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBackArrow;
     private javax.swing.JLabel lblControlScreenMode;
