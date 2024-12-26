@@ -47,22 +47,37 @@ public class MainScreen extends javax.swing.JFrame {
         lblRefresh = new javax.swing.JLabel();
         textFieldSearchBar = new javax.swing.JTextField();
         pnlAllScreens = new javax.swing.JPanel();
+        pnlControlScreen = new javax.swing.JPanel();
+        lblControlScreenMode = new javax.swing.JLabel();
+        comboBoxModeSelector = new javax.swing.JComboBox<>();
+        pnlAllControlPanels = new javax.swing.JPanel();
+        pnlAddModeSelected = new javax.swing.JPanel();
+        lblAddAProduct = new javax.swing.JLabel();
+        tfProductName = new javax.swing.JTextField();
+        tfProductPrice = new javax.swing.JTextField();
+        tfProductId = new javax.swing.JTextField();
+        tfProductWeight = new javax.swing.JTextField();
+        tfProductUnit = new javax.swing.JTextField();
+        tfProductQuantity = new javax.swing.JTextField();
+        btnAddIt = new javax.swing.JButton();
+        lblProductName = new javax.swing.JLabel();
+        lblProductPrice = new javax.swing.JLabel();
+        lblProductQuantity = new javax.swing.JLabel();
+        lblProductId = new javax.swing.JLabel();
+        lblProductWeight = new javax.swing.JLabel();
+        lblProductUnit = new javax.swing.JLabel();
+        pnlNoModeSelected = new javax.swing.JPanel();
+        lblNoModeSelectedBackground = new javax.swing.JLabel();
+        pnlRemoveModeSelected = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        pnlUpdateModeSelected = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         pnlProductScreen = new javax.swing.JPanel();
         lblProductScreenProductsTable = new javax.swing.JLabel();
         tableScrollPane = new javax.swing.JScrollPane();
         productTable = new javax.swing.JTable();
         pnlHomeScreen = new javax.swing.JPanel();
         lblHomeBackground = new javax.swing.JLabel();
-        pnlControlScreen = new javax.swing.JPanel();
-        lblControlScreenMode = new javax.swing.JLabel();
-        comboBoxModeSelector = new javax.swing.JComboBox<>();
-        pnlAllControlPanels = new javax.swing.JPanel();
-        pnlNoModeSelected = new javax.swing.JPanel();
-        pnlRemoveModeSelected = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        pnlUpdateModeSelected = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        pnlAddModeSelected = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("mainScreenFrame");
@@ -208,6 +223,233 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlAllScreens.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnlControlScreen.setBackground(new java.awt.Color(148, 183, 58));
+        pnlControlScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        lblControlScreenMode.setText("Mode:");
+
+        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Mode", "ADD", "UPDATE", "REMOVE" }));
+        comboBoxModeSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxModeSelectorActionPerformed(evt);
+            }
+        });
+
+        pnlAllControlPanels.setBackground(new java.awt.Color(148, 183, 58));
+        pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlAddModeSelected.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblAddAProduct.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
+        lblAddAProduct.setText("ADD a Product");
+
+        tfProductName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProductNameActionPerformed(evt);
+            }
+        });
+
+        tfProductPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProductPriceActionPerformed(evt);
+            }
+        });
+
+        tfProductId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProductIdActionPerformed(evt);
+            }
+        });
+
+        tfProductWeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProductWeightActionPerformed(evt);
+            }
+        });
+
+        tfProductUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProductUnitActionPerformed(evt);
+            }
+        });
+
+        tfProductQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfProductQuantityActionPerformed(evt);
+            }
+        });
+
+        btnAddIt.setText("ADD IT");
+
+        lblProductName.setText("Name");
+
+        lblProductPrice.setText("Price");
+
+        lblProductQuantity.setText("Quantity");
+
+        lblProductId.setText("Product ID");
+
+        lblProductWeight.setText("Weight");
+
+        lblProductUnit.setText("Unit of Weight");
+
+        javax.swing.GroupLayout pnlAddModeSelectedLayout = new javax.swing.GroupLayout(pnlAddModeSelected);
+        pnlAddModeSelected.setLayout(pnlAddModeSelectedLayout);
+        pnlAddModeSelectedLayout.setHorizontalGroup(
+            pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAddModeSelectedLayout.createSequentialGroup()
+                .addContainerGap(166, Short.MAX_VALUE)
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProductId))
+                .addGap(70, 70, 70)
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProductName))
+                .addGap(77, 77, 77)
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblProductPrice))
+                .addGap(65, 65, 65)
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblProductQuantity)
+                    .addComponent(tfProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(212, 212, 212))
+            .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
+                        .addGap(401, 401, 401)
+                        .addComponent(lblAddAProduct))
+                    .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
+                        .addGap(344, 344, 344)
+                        .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfProductWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblProductWeight))
+                        .addGap(134, 134, 134)
+                        .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblProductUnit)
+                            .addComponent(tfProductUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
+                        .addGap(459, 459, 459)
+                        .addComponent(btnAddIt, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlAddModeSelectedLayout.setVerticalGroup(
+            pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAddModeSelectedLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblAddAProduct)
+                .addGap(66, 66, 66)
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblProductName)
+                    .addComponent(lblProductPrice)
+                    .addComponent(lblProductQuantity)
+                    .addComponent(lblProductId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfProductId, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblProductWeight, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblProductUnit, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfProductUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfProductWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
+                .addComponent(btnAddIt, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
+        );
+
+        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        pnlNoModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+        pnlNoModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNoModeSelectedBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/noModeSelectedBg.png"))); // NOI18N
+        pnlNoModeSelected.add(lblNoModeSelectedBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 490));
+
+        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        jLabel4.setText("remove mode");
+
+        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
+        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
+        pnlRemoveModeSelectedLayout.setHorizontalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(262, 262, 262)
+                .addComponent(jLabel4)
+                .addContainerGap(798, Short.MAX_VALUE))
+        );
+        pnlRemoveModeSelectedLayout.setVerticalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addContainerGap(307, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(165, 165, 165))
+        );
+
+        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        jLabel5.setText("update Mode");
+
+        javax.swing.GroupLayout pnlUpdateModeSelectedLayout = new javax.swing.GroupLayout(pnlUpdateModeSelected);
+        pnlUpdateModeSelected.setLayout(pnlUpdateModeSelectedLayout);
+        pnlUpdateModeSelectedLayout.setHorizontalGroup(
+            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1150, Short.MAX_VALUE)
+            .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                    .addGap(552, 552, 552)
+                    .addComponent(jLabel5)
+                    .addContainerGap(515, Short.MAX_VALUE)))
+        );
+        pnlUpdateModeSelectedLayout.setVerticalGroup(
+            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
+                    .addGap(236, 236, 236)
+                    .addComponent(jLabel5)
+                    .addContainerGap(236, Short.MAX_VALUE)))
+        );
+
+        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
+        pnlControlScreen.setLayout(pnlControlScreenLayout);
+        pnlControlScreenLayout.setHorizontalGroup(
+            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblControlScreenMode)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        pnlControlScreenLayout.setVerticalGroup(
+            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblControlScreenMode)
+                    .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        pnlAllScreens.add(pnlControlScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
+
         pnlProductScreen.setBackground(new java.awt.Color(255, 255, 255));
         pnlProductScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -264,126 +506,12 @@ public class MainScreen extends javax.swing.JFrame {
         pnlHomeScreenLayout.setVerticalGroup(
             pnlHomeScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHomeScreenLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 3, Short.MAX_VALUE)
                 .addComponent(lblHomeBackground)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
         pnlAllScreens.add(pnlHomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
-
-        lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        lblControlScreenMode.setText("Mode:");
-
-        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Mode", "ADD", "UPDATE", "REMOVE" }));
-        comboBoxModeSelector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxModeSelectorActionPerformed(evt);
-            }
-        });
-
-        pnlAllControlPanels.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        javax.swing.GroupLayout pnlNoModeSelectedLayout = new javax.swing.GroupLayout(pnlNoModeSelected);
-        pnlNoModeSelected.setLayout(pnlNoModeSelectedLayout);
-        pnlNoModeSelectedLayout.setHorizontalGroup(
-            pnlNoModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
-        );
-        pnlNoModeSelectedLayout.setVerticalGroup(
-            pnlNoModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-        );
-
-        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        jLabel4.setText("remove mode");
-
-        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
-        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
-        pnlRemoveModeSelectedLayout.setHorizontalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(262, 262, 262)
-                .addComponent(jLabel4)
-                .addContainerGap(798, Short.MAX_VALUE))
-        );
-        pnlRemoveModeSelectedLayout.setVerticalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addContainerGap(307, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(165, 165, 165))
-        );
-
-        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        jLabel5.setText("update Mode");
-
-        javax.swing.GroupLayout pnlUpdateModeSelectedLayout = new javax.swing.GroupLayout(pnlUpdateModeSelected);
-        pnlUpdateModeSelected.setLayout(pnlUpdateModeSelectedLayout);
-        pnlUpdateModeSelectedLayout.setHorizontalGroup(
-            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
-            .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                    .addGap(552, 552, 552)
-                    .addComponent(jLabel5)
-                    .addContainerGap(515, Short.MAX_VALUE)))
-        );
-        pnlUpdateModeSelectedLayout.setVerticalGroup(
-            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-            .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                    .addGap(236, 236, 236)
-                    .addComponent(jLabel5)
-                    .addContainerGap(236, Short.MAX_VALUE)))
-        );
-
-        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        javax.swing.GroupLayout pnlAddModeSelectedLayout = new javax.swing.GroupLayout(pnlAddModeSelected);
-        pnlAddModeSelected.setLayout(pnlAddModeSelectedLayout);
-        pnlAddModeSelectedLayout.setHorizontalGroup(
-            pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
-        );
-        pnlAddModeSelectedLayout.setVerticalGroup(
-            pnlAddModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
-        );
-
-        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
-        pnlControlScreen.setLayout(pnlControlScreenLayout);
-        pnlControlScreenLayout.setHorizontalGroup(
-            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblControlScreenMode)
-                .addGap(18, 18, 18)
-                .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        pnlControlScreenLayout.setVerticalGroup(
-            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblControlScreenMode)
-                    .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-
-        pnlAllScreens.add(pnlControlScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
 
         getContentPane().add(pnlAllScreens, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1280, 630));
 
@@ -438,6 +566,30 @@ public class MainScreen extends javax.swing.JFrame {
         pnlProductScreen.setVisible(false);
         pnlControlScreen.setVisible(true);
     }//GEN-LAST:event_pnlControlTabMouseClicked
+
+    private void tfProductNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProductNameActionPerformed
+
+    private void tfProductPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProductPriceActionPerformed
+
+    private void tfProductIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProductIdActionPerformed
+
+    private void tfProductWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductWeightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProductWeightActionPerformed
+
+    private void tfProductUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductUnitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProductUnitActionPerformed
+
+    private void tfProductQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfProductQuantityActionPerformed
 
     // Method to add product data and populate the table
     private void registerProduct(ProductModel item) {
@@ -495,17 +647,26 @@ public class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddIt;
     private javax.swing.JComboBox<String> comboBoxModeSelector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblAddAProduct;
     private javax.swing.JLabel lblBackArrow;
     private javax.swing.JLabel lblControlScreenMode;
     private javax.swing.JLabel lblFrontArrow;
     private javax.swing.JLabel lblHomeBackground;
+    private javax.swing.JLabel lblNoModeSelectedBackground;
+    private javax.swing.JLabel lblProductId;
+    private javax.swing.JLabel lblProductName;
+    private javax.swing.JLabel lblProductPrice;
+    private javax.swing.JLabel lblProductQuantity;
     private javax.swing.JLabel lblProductScreenProductsTable;
+    private javax.swing.JLabel lblProductUnit;
+    private javax.swing.JLabel lblProductWeight;
     private javax.swing.JLabel lblRefresh;
     private javax.swing.JPanel pnlAddModeSelected;
     private javax.swing.JPanel pnlAllControlPanels;
@@ -524,5 +685,11 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JTable productTable;
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.JTextField textFieldSearchBar;
+    private javax.swing.JTextField tfProductId;
+    private javax.swing.JTextField tfProductName;
+    private javax.swing.JTextField tfProductPrice;
+    private javax.swing.JTextField tfProductQuantity;
+    private javax.swing.JTextField tfProductUnit;
+    private javax.swing.JTextField tfProductWeight;
     // End of variables declaration//GEN-END:variables
 }
