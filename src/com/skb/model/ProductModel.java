@@ -82,7 +82,7 @@ public class ProductModel {
         return quantity;
     }
 
-    public void setPrice(int quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 }

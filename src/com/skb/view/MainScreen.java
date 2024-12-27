@@ -1,5 +1,6 @@
 package com.skb.view;
 import com.skb.model.ProductModel;
+import java.awt.Color;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
@@ -51,6 +52,28 @@ public class MainScreen extends javax.swing.JFrame {
         lblControlScreenMode = new javax.swing.JLabel();
         comboBoxModeSelector = new javax.swing.JComboBox<>();
         pnlAllControlPanels = new javax.swing.JPanel();
+        pnlRemoveModeSelected = new javax.swing.JPanel();
+        tfProductName2 = new javax.swing.JTextField();
+        lblAddAProduct2 = new javax.swing.JLabel();
+        lblProductName2 = new javax.swing.JLabel();
+        btnRemoveIt = new javax.swing.JButton();
+        pnlUpdateModeSelected = new javax.swing.JPanel();
+        lblAddAProduct1 = new javax.swing.JLabel();
+        tfProductName1 = new javax.swing.JTextField();
+        tfProductPrice1 = new javax.swing.JTextField();
+        tfProductId1 = new javax.swing.JTextField();
+        tfProductWeight1 = new javax.swing.JTextField();
+        tfProductUnit1 = new javax.swing.JTextField();
+        tfProductQuantity1 = new javax.swing.JTextField();
+        tfProductSupplier1 = new javax.swing.JTextField();
+        btnUpdateIt = new javax.swing.JButton();
+        lblProductName1 = new javax.swing.JLabel();
+        lblProductPrice1 = new javax.swing.JLabel();
+        lblProductQuantity1 = new javax.swing.JLabel();
+        lblProductId1 = new javax.swing.JLabel();
+        lblProductWeight1 = new javax.swing.JLabel();
+        lblProductUnit1 = new javax.swing.JLabel();
+        lblProductSupplier1 = new javax.swing.JLabel();
         pnlAddModeSelected = new javax.swing.JPanel();
         lblAddAProduct = new javax.swing.JLabel();
         tfProductName = new javax.swing.JTextField();
@@ -68,25 +91,6 @@ public class MainScreen extends javax.swing.JFrame {
         lblProductWeight = new javax.swing.JLabel();
         lblProductUnit = new javax.swing.JLabel();
         lblProductSupplier = new javax.swing.JLabel();
-        pnlRemoveModeSelected = new javax.swing.JPanel();
-        tfProductName2 = new javax.swing.JTextField();
-        lblAddAProduct2 = new javax.swing.JLabel();
-        lblProductName2 = new javax.swing.JLabel();
-        pnlUpdateModeSelected = new javax.swing.JPanel();
-        lblAddAProduct1 = new javax.swing.JLabel();
-        tfProductName1 = new javax.swing.JTextField();
-        tfProductPrice1 = new javax.swing.JTextField();
-        tfProductId1 = new javax.swing.JTextField();
-        tfProductWeight1 = new javax.swing.JTextField();
-        tfProductUnit1 = new javax.swing.JTextField();
-        tfProductQuantity1 = new javax.swing.JTextField();
-        btnAddIt1 = new javax.swing.JButton();
-        lblProductName1 = new javax.swing.JLabel();
-        lblProductPrice1 = new javax.swing.JLabel();
-        lblProductQuantity1 = new javax.swing.JLabel();
-        lblProductId1 = new javax.swing.JLabel();
-        lblProductWeight1 = new javax.swing.JLabel();
-        lblProductUnit1 = new javax.swing.JLabel();
         pnlNoModeSelected = new javax.swing.JPanel();
         lblNoModeSelectedBackground = new javax.swing.JLabel();
         pnlProductScreen = new javax.swing.JPanel();
@@ -256,6 +260,97 @@ public class MainScreen extends javax.swing.JFrame {
         pnlAllControlPanels.setBackground(new java.awt.Color(148, 183, 58));
         pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblAddAProduct2.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
+        lblAddAProduct2.setText("REMOVE a Product");
+
+        lblProductName2.setText("Product Id");
+
+        btnRemoveIt.setText("REMOVE IT");
+        btnRemoveIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveItActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
+        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
+        pnlRemoveModeSelectedLayout.setHorizontalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addContainerGap(358, Short.MAX_VALUE)
+                .addComponent(lblAddAProduct2)
+                .addGap(366, 366, 366))
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(506, 506, 506)
+                .addComponent(lblProductName2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(472, 472, 472)
+                .addGroup(pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRemoveIt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfProductName2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnlRemoveModeSelectedLayout.setVerticalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(lblAddAProduct2)
+                .addGap(123, 123, 123)
+                .addComponent(lblProductName2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(btnRemoveIt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+
+        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        pnlUpdateModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddAProduct1.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
+        lblAddAProduct1.setText("UPDATE a Product");
+        pnlUpdateModeSelected.add(lblAddAProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
+        pnlUpdateModeSelected.add(tfProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 140, 48));
+        pnlUpdateModeSelected.add(tfProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 140, 48));
+        pnlUpdateModeSelected.add(tfProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 160, 40));
+
+        btnUpdateIt.setText("UPDATE IT");
+        btnUpdateIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateItActionPerformed(evt);
+            }
+        });
+        pnlUpdateModeSelected.add(btnUpdateIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 176, 57));
+
+        lblProductName1.setText("Name");
+        pnlUpdateModeSelected.add(lblProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
+
+        lblProductPrice1.setText("Price");
+        pnlUpdateModeSelected.add(lblProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
+
+        lblProductQuantity1.setText("Quantity");
+        pnlUpdateModeSelected.add(lblProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
+
+        lblProductId1.setText("Product ID");
+        pnlUpdateModeSelected.add(lblProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        lblProductWeight1.setText("Weight");
+        pnlUpdateModeSelected.add(lblProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+
+        lblProductUnit1.setText("Unit of Weight");
+        pnlUpdateModeSelected.add(lblProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
+
+        lblProductSupplier1.setText("Supplier");
+        pnlUpdateModeSelected.add(lblProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
+
+        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
         pnlAddModeSelected.setBackground(new java.awt.Color(255, 255, 255));
         pnlAddModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -300,132 +395,6 @@ public class MainScreen extends javax.swing.JFrame {
         pnlAddModeSelected.add(lblProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
 
         pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        lblAddAProduct2.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
-        lblAddAProduct2.setText("REMOVE a Product");
-
-        lblProductName2.setText("Product Id");
-
-        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
-        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
-        pnlRemoveModeSelectedLayout.setHorizontalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addContainerGap(358, Short.MAX_VALUE)
-                .addComponent(lblAddAProduct2)
-                .addGap(366, 366, 366))
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(472, 472, 472)
-                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(506, 506, 506)
-                .addComponent(lblProductName2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlRemoveModeSelectedLayout.setVerticalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(lblAddAProduct2)
-                .addGap(123, 123, 123)
-                .addComponent(lblProductName2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
-
-        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        lblAddAProduct1.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
-        lblAddAProduct1.setText("UPDATE a Product");
-
-        btnAddIt1.setText("UPDATE IT");
-
-        lblProductName1.setText("Name");
-
-        lblProductPrice1.setText("Price");
-
-        lblProductQuantity1.setText("Quantity");
-
-        lblProductId1.setText("Product ID");
-
-        lblProductWeight1.setText("Weight");
-
-        lblProductUnit1.setText("Unit of Weight");
-
-        javax.swing.GroupLayout pnlUpdateModeSelectedLayout = new javax.swing.GroupLayout(pnlUpdateModeSelected);
-        pnlUpdateModeSelected.setLayout(pnlUpdateModeSelectedLayout);
-        pnlUpdateModeSelectedLayout.setHorizontalGroup(
-            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUpdateModeSelectedLayout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfProductId1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductId1))
-                .addGap(70, 70, 70)
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfProductName1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductName1))
-                .addGap(77, 77, 77)
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfProductPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductPrice1))
-                .addGap(65, 65, 65)
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProductQuantity1)
-                    .addComponent(tfProductQuantity1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(212, 212, 212))
-            .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfProductWeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblProductWeight1))
-                                .addGap(134, 134, 134)
-                                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblProductUnit1)
-                                    .addComponent(tfProductUnit1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblAddAProduct1)))
-                    .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                        .addGap(459, 459, 459)
-                        .addComponent(btnAddIt1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(392, Short.MAX_VALUE))
-        );
-        pnlUpdateModeSelectedLayout.setVerticalGroup(
-            pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlUpdateModeSelectedLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lblAddAProduct1)
-                .addGap(66, 66, 66)
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblProductName1)
-                    .addComponent(lblProductPrice1)
-                    .addComponent(lblProductQuantity1)
-                    .addComponent(lblProductId1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfProductPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProductName1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProductId1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProductQuantity1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProductWeight1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblProductUnit1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlUpdateModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfProductUnit1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProductWeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(btnAddIt1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-        );
-
-        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
 
         pnlNoModeSelected.setBackground(new java.awt.Color(148, 183, 58));
         pnlNoModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -583,8 +552,13 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void btnAddItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItActionPerformed
         // TODO add your handling code here:
+        
+        // Helper method to reset the border of a JTextField
+        resetBorders();
+
         // Validate Product Supplier
         if (tfProductSupplier.getText().trim().isEmpty()) {
+            tfProductSupplier.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(this, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductSupplier.requestFocus();
             return;
@@ -597,6 +571,7 @@ public class MainScreen extends javax.swing.JFrame {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
+            tfProductQuantity.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(this, "Product Quantity must be a positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductQuantity.requestFocus();
             return;
@@ -604,6 +579,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         // Validate Product Unit
         if (tfProductUnit.getText().trim().isEmpty()) {
+            tfProductUnit.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(this, "Product Unit cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductUnit.requestFocus();
             return;
@@ -616,6 +592,7 @@ public class MainScreen extends javax.swing.JFrame {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
+            tfProductWeight.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(this, "Product Weight must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductWeight.requestFocus();
             return;
@@ -623,6 +600,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         // Validate Product ID
         if (tfProductId.getText().trim().isEmpty()) {
+            tfProductId.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(this, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductId.requestFocus();
             return;
@@ -635,6 +613,7 @@ public class MainScreen extends javax.swing.JFrame {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
+            tfProductPrice.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(this, "Product Price must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductPrice.requestFocus();
             return;
@@ -642,15 +621,219 @@ public class MainScreen extends javax.swing.JFrame {
 
         // Validate Product Name
         if (tfProductName.getText().trim().isEmpty()) {
+            tfProductName.setBorder(BorderFactory.createLineBorder(Color.RED));
             JOptionPane.showMessageDialog(this, "Product Name cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductName.requestFocus();
             return;
         }
 
         // If all validations pass
-        JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);        
+        JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);    
+        
+        try {
+            int productId = Integer.parseInt(tfProductId.getText().trim());
+            String productName = tfProductName.getText().trim();
+            String weight = tfProductWeight.getText().trim();
+            String weightUnit = tfProductUnit.getText().trim();
+            String supplier = tfProductSupplier.getText().trim();
+            double price = Double.parseDouble(tfProductPrice.getText().trim());
+            int quantity = Integer.parseInt(tfProductQuantity.getText().trim());
+
+            // Create ProductModel object and register it
+            ProductModel product = new ProductModel(productId, productName, weight, weightUnit, supplier, price, quantity);
+            registerProduct(product);
+            refreshProductTable();
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Invalid input. Please ensure numeric fields are correctly filled.", "Input Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
     }//GEN-LAST:event_btnAddItActionPerformed
 
+    private void btnUpdateItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateItActionPerformed
+        // TODO add your handling code here:
+        
+        // Helper method to reset the border of a JTextField
+        resetBordersUpdate();
+
+        // Validate Product Supplier
+        if (tfProductSupplier1.getText().trim().isEmpty()) {
+            tfProductSupplier1.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductSupplier1.requestFocus();
+            return;
+        }
+
+        // Validate Product Quantity
+        try {
+            int quantity = Integer.parseInt(tfProductQuantity1.getText().trim());
+            if (quantity <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            tfProductQuantity1.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Product Quantity must be a positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductQuantity1.requestFocus();
+            return;
+        }
+
+        // Validate Product Unit
+        if (tfProductUnit1.getText().trim().isEmpty()) {
+            tfProductUnit1.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Product Unit cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductUnit1.requestFocus();
+            return;
+        }
+
+        // Validate Product Weight
+        try {
+            double weight = Double.parseDouble(tfProductWeight1.getText().trim());
+            if (weight <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            tfProductWeight1.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Product Weight must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductWeight1.requestFocus();
+            return;
+        }
+
+        // Validate Product ID
+        if (tfProductId1.getText().trim().isEmpty()) {
+            tfProductId1.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductId1.requestFocus();
+            return;
+        }
+
+        // Validate Product Price
+        try {
+            double price = Double.parseDouble(tfProductPrice1.getText().trim());
+            if (price <= 0) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            tfProductPrice1.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Product Price must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductPrice1.requestFocus();
+            return;
+        }
+
+        // Validate Product Name
+        if (tfProductName1.getText().trim().isEmpty()) {
+            tfProductName1.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Product Name cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductName1.requestFocus();
+            return;
+        }
+
+        // If all validations pass
+        try {
+            int productId = Integer.parseInt(tfProductId1.getText().trim());
+            String productName = tfProductName1.getText().trim();
+            String weight = tfProductWeight1.getText().trim();
+            String weightUnit = tfProductUnit1.getText().trim();
+            String supplier = tfProductSupplier1.getText().trim();
+            double price = Double.parseDouble(tfProductPrice1.getText().trim());
+            int quantity = Integer.parseInt(tfProductQuantity1.getText().trim());
+
+            // Update the product in the product list or table
+            ProductModel product = findProductById(productId); // Helper method to find the product by ID
+            if (product != null) {
+                product.setProductName(productName);
+                product.setWeight(weight);
+                product.setWeightUnit(weightUnit);
+                product.setSupplier(supplier);
+                product.setPrice(price);
+                product.setQuantity(quantity);
+
+                refreshProductTable(); // Refresh the table view after updating
+                JOptionPane.showMessageDialog(this, "Product updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Product with the given ID not found.", "Update Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid input. Please ensure numeric fields are correctly filled.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } 
+    }//GEN-LAST:event_btnUpdateItActionPerformed
+
+    private void btnRemoveItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveItActionPerformed
+        // TODO add your handling code here:
+            
+        tfProductName2.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+        // Validate that the ID is entered
+        if (tfProductName2.getText().trim().isEmpty()) {
+            tfProductName2.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductName2.requestFocus();
+            return;
+        }
+
+        try {
+            // Parse the Product ID
+            int productId = Integer.parseInt(tfProductName2.getText().trim());
+
+            // Search and remove the product by ID
+            boolean productRemoved = false;
+            for (int i = 0; i < productList.size(); i++) {
+                if (productList.get(i).getProductId() == productId) {
+                    productList.remove(i);
+                    productRemoved = true;
+                    break;
+                }
+            }
+
+            if (productRemoved) {
+                refreshProductTable(); // Refresh the table to reflect changes
+                JOptionPane.showMessageDialog(this, "Product removed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Product with the given ID not found.", "Removal Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            tfProductName2.setBorder(BorderFactory.createLineBorder(Color.RED));
+            JOptionPane.showMessageDialog(this, "Invalid Product ID. Please enter a valid integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            tfProductName2.requestFocus();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnRemoveItActionPerformed
+
+    private void resetBordersUpdate() {
+        // Reset borders of all text fields in the update form to default
+        tfProductSupplier1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductQuantity1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductUnit1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductWeight1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductId1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductPrice1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductName1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    }   
+
+    private ProductModel findProductById(int productId) {
+        for (ProductModel product : productList) {
+            if (product.getProductId() == productId) {
+                return product;
+            }
+        }
+        return null;
+    }
+    
+    private void resetBorders() {
+        // Reset borders of all text fields to default
+        tfProductSupplier.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductQuantity.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductUnit.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductWeight.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductId.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductPrice.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        tfProductName.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    }
+    
     // Method to add product data and populate the table
     private void registerProduct(ProductModel item) {
         productList.add(item);
@@ -658,6 +841,19 @@ public class MainScreen extends javax.swing.JFrame {
         model.addRow(new Object[]{
             item.getProductId(),item.getProductName(), item.getPrice(), item.getQuantity(), item.getSupplier(), item.getWeight(), item.getWeightUnit()
         });
+    }
+    
+    private void refreshProductTable() {
+        DefaultTableModel model = (DefaultTableModel) productTable.getModel();
+        model.setRowCount(0); // Clear existing rows
+
+        for (ProductModel item : productList) {
+            model.addRow(new Object[]{
+            item.getProductId(),item.getProductName(), item.getPrice(), item.getQuantity(), item.getSupplier(), item.getWeight(), item.getWeightUnit()
+        });
+        }
+        
+        System.out.println("inside refresh table");
     }
     
     // Method to initialize data, including student list and table
@@ -708,7 +904,8 @@ public class MainScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddIt;
-    private javax.swing.JButton btnAddIt1;
+    private javax.swing.JButton btnRemoveIt;
+    private javax.swing.JButton btnUpdateIt;
     private javax.swing.JComboBox<String> comboBoxModeSelector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -732,6 +929,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblProductQuantity1;
     private javax.swing.JLabel lblProductScreenProductsTable;
     private javax.swing.JLabel lblProductSupplier;
+    private javax.swing.JLabel lblProductSupplier1;
     private javax.swing.JLabel lblProductUnit;
     private javax.swing.JLabel lblProductUnit1;
     private javax.swing.JLabel lblProductWeight;
@@ -764,6 +962,7 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JTextField tfProductQuantity;
     private javax.swing.JTextField tfProductQuantity1;
     private javax.swing.JTextField tfProductSupplier;
+    private javax.swing.JTextField tfProductSupplier1;
     private javax.swing.JTextField tfProductUnit;
     private javax.swing.JTextField tfProductUnit1;
     private javax.swing.JTextField tfProductWeight;
