@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.skb.controller.algorithms;
 
 import com.skb.model.ProductModel;
 import java.util.List;
 import com.skb.util.TableUpdator;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -16,50 +12,52 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SelectionSort {
 
-    public static void sort(List<ProductModel> products, String sortBy, boolean isAscending) {
-        for (int i = 0; i < products.size() - 1; i++) {
+    public static void SelectionSort(List<ProductModel> productList, String sortBy, boolean isAscending, JTable productTable) {
+        for (int i = 0; i < productList.size() - 1; i++) {
             int selectedIndex = i;
 
-            for (int j = i + 1; j < products.size(); j++) {
+            for (int j = i + 1; j < productList.size(); j++) {
                 boolean condition = false;
 
                 if (sortBy.equalsIgnoreCase("price")) {
                     if (isAscending) {
-                        if (products.get(j).getPrice() < products.get(selectedIndex).getPrice()) {
+                        if (productList.get(j).getPrice() < productList.get(selectedIndex).getPrice()) {
                             condition = true;
                         }
                     } else {
-                        if (products.get(j).getPrice() > products.get(selectedIndex).getPrice()) {
+                        if (productList.get(j).getPrice() > productList.get(selectedIndex).getPrice()) {
                             condition = true;
                         }
                     }
                 } else if (sortBy.equalsIgnoreCase("name")) {
                     if (isAscending) {
-                        if (products.get(j).getProductName().compareTo(products.get(selectedIndex).getProductName()) < 0) {
+                        if (productList.get(j).getProductName().compareTo(productList.get(selectedIndex).getProductName()) < 0) {
                             condition = true;
                         }
                     } else {
-                        if (products.get(j).getProductName().compareTo(products.get(selectedIndex).getProductName()) > 0) {
+                        if (productList.get(j).getProductName().compareTo(productList.get(selectedIndex).getProductName()) > 0) {
                             condition = true;
                         }
                     }
                 } else if (sortBy.equalsIgnoreCase("quantity")) {
                     if (isAscending) {
-                        if (products.get(j).getQuantity() < products.get(selectedIndex).getQuantity()) {
+                        if (productList.get(j).getQuantity() < productList.get(selectedIndex).getQuantity()) {
                             condition = true;
                         }
                     } else {
-                        if (products.get(j).getQuantity() > products.get(selectedIndex).getQuantity()) {
+                        if (productList.get(j).getQuantity() > productList.get(selectedIndex).getQuantity()) {
                             condition = true;
                         }
                     }
                 } else if (sortBy.equalsIgnoreCase("weight")) {
+                    int weightJ = Integer.parseInt(productList.get(j).getWeight());
+                    int weightSelected = Integer.parseInt(productList.get(selectedIndex).getWeight());
                     if (isAscending) {
-                        if (products.get(j).getWeight().compareTo(products.get(selectedIndex).getWeight()) < 0) {
+                        if (weightJ < weightSelected) {
                             condition = true;
                         }
                     } else {
-                        if (products.get(j).getWeight().compareTo(products.get(selectedIndex).getWeight()) > 0) {
+                        if (weightJ > weightSelected) {
                             condition = true;
                         }
                     }
@@ -70,17 +68,16 @@ public class SelectionSort {
                 }
             }
 
-            // Swap the elements
+            // Swap the elements after the inner loop
             if (selectedIndex != i) {
-                ProductModel temp = products.get(i);
-                products.set(i, products.get(selectedIndex));
-                products.set(selectedIndex, temp);
+                ProductModel temp = productList.get(i);
+                productList.set(i, productList.get(selectedIndex));
+                productList.set(selectedIndex, temp);
             }
         }
-    }
-    
-    public void UpdateSortedDataInTable(JTable productTable){
-        DefaultTableModel model = (DefaultTableModel) productTable.getModel();
-        model.setRowCount(0);
+
+        // Update the table after sorting is complete
+        TableUpdator sortedTable = new TableUpdator();
+        sortedTable.refreshProductTable(productTable, productList);
     }
 }

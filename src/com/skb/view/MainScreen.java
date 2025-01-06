@@ -1,5 +1,7 @@
 package com.skb.view;
 
+import com.skb.controller.algorithms.InsertionSort;
+import com.skb.controller.algorithms.SelectionSort;
 import com.skb.model.ProductModel;
 import com.skb.util.Validation;
 import java.awt.Color;
@@ -234,6 +236,7 @@ public class MainScreen extends javax.swing.JFrame {
         comboBoxSortingAlgorithm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selection Sort", "Insertion Sort", "Merge Sort" }));
 
         comboBoxSortingParameter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Price", "Name", "Quantity", "Weight" }));
+        comboBoxSortingParameter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnSortIt.setText("Sort");
         btnSortIt.addActionListener(new java.awt.event.ActionListener() {
@@ -676,7 +679,23 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRemoveItActionPerformed
 
     private void btnSortItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortItActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
+        String selectedSortingParameter = (String) comboBoxSortingParameter.getSelectedItem();
+        String selectedSortingAlgorithm = (String) comboBoxSortingAlgorithm.getSelectedItem();
+        boolean isAscending = !btnSortingToggler.isSelected();
+
+        switch (selectedSortingAlgorithm) {
+            case "Selection Sort":
+                SelectionSort.SelectionSort(productList, selectedSortingParameter, isAscending, productTable);
+                break;
+            case "Insertion Sort":
+                System.out.println("Inside Insertion Sort");
+                InsertionSort.InsertionSort(productList, selectedSortingParameter, isAscending, productTable);
+                break;
+            case "Merge Sort":
+                pnlAddModeSelected.setVisible(true);
+                break;
+        }
     }//GEN-LAST:event_btnSortItActionPerformed
 
     private void resetBordersUpdate() {
