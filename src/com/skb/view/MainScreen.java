@@ -1,5 +1,7 @@
 package com.skb.view;
+
 import com.skb.model.ProductModel;
+import com.skb.util.Validation;
 import java.awt.Color;
 import javax.swing.*;
 import java.awt.event.*;
@@ -11,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  * @author shishir
  */
 public class MainScreen extends javax.swing.JFrame {
-    
+
     private List<ProductModel> productList;
 
     /**
@@ -20,10 +22,15 @@ public class MainScreen extends javax.swing.JFrame {
     public MainScreen() {
         initComponents();
         initializeData();
-        
+
         //My Code
-        setTitle("Shishir Khadya Bhandar");    
+        setTitle("Shishir Khadya Bhandar");
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
+
+        //make searchbar unfocusable
+        textFieldSearchBar.setFocusable(false);
+        pnlProductScreen.setVisible(false);
+        pnlControlScreen.setVisible(false);
     }
 
     /**
@@ -47,33 +54,31 @@ public class MainScreen extends javax.swing.JFrame {
         lblFrontArrow = new javax.swing.JLabel();
         lblRefresh = new javax.swing.JLabel();
         textFieldSearchBar = new javax.swing.JTextField();
+        groupSort = new javax.swing.JPanel();
+        comboBoxSortingAlgorithm = new javax.swing.JComboBox<>();
+        comboBoxSortingParameter = new javax.swing.JComboBox<>();
+        btnSortIt = new javax.swing.JButton();
+        lblSortBy = new javax.swing.JLabel();
+        btnSortingToggler = new javax.swing.JToggleButton();
+        btnSearchIt = new javax.swing.JButton();
         pnlAllScreens = new javax.swing.JPanel();
+        pnlProductScreen = new javax.swing.JPanel();
+        lblProductScreenProductsTable = new javax.swing.JLabel();
+        tableScrollPane = new javax.swing.JScrollPane();
+        productTable = new javax.swing.JTable();
+        pnlHomeScreen = new javax.swing.JPanel();
+        lblHomeBackground = new javax.swing.JLabel();
         pnlControlScreen = new javax.swing.JPanel();
         lblControlScreenMode = new javax.swing.JLabel();
         comboBoxModeSelector = new javax.swing.JComboBox<>();
         pnlAllControlPanels = new javax.swing.JPanel();
+        pnlNoModeSelected = new javax.swing.JPanel();
+        lblNoModeSelectedBackground = new javax.swing.JLabel();
         pnlRemoveModeSelected = new javax.swing.JPanel();
         tfProductName2 = new javax.swing.JTextField();
-        lblAddAProduct2 = new javax.swing.JLabel();
+        lblRemoveAProduct = new javax.swing.JLabel();
         lblProductName2 = new javax.swing.JLabel();
         btnRemoveIt = new javax.swing.JButton();
-        pnlUpdateModeSelected = new javax.swing.JPanel();
-        lblAddAProduct1 = new javax.swing.JLabel();
-        tfProductName1 = new javax.swing.JTextField();
-        tfProductPrice1 = new javax.swing.JTextField();
-        tfProductId1 = new javax.swing.JTextField();
-        tfProductWeight1 = new javax.swing.JTextField();
-        tfProductUnit1 = new javax.swing.JTextField();
-        tfProductQuantity1 = new javax.swing.JTextField();
-        tfProductSupplier1 = new javax.swing.JTextField();
-        btnUpdateIt = new javax.swing.JButton();
-        lblProductName1 = new javax.swing.JLabel();
-        lblProductPrice1 = new javax.swing.JLabel();
-        lblProductQuantity1 = new javax.swing.JLabel();
-        lblProductId1 = new javax.swing.JLabel();
-        lblProductWeight1 = new javax.swing.JLabel();
-        lblProductUnit1 = new javax.swing.JLabel();
-        lblProductSupplier1 = new javax.swing.JLabel();
         pnlAddModeSelected = new javax.swing.JPanel();
         lblAddAProduct = new javax.swing.JLabel();
         tfProductName = new javax.swing.JTextField();
@@ -91,20 +96,28 @@ public class MainScreen extends javax.swing.JFrame {
         lblProductWeight = new javax.swing.JLabel();
         lblProductUnit = new javax.swing.JLabel();
         lblProductSupplier = new javax.swing.JLabel();
-        pnlNoModeSelected = new javax.swing.JPanel();
-        lblNoModeSelectedBackground = new javax.swing.JLabel();
-        pnlProductScreen = new javax.swing.JPanel();
-        lblProductScreenProductsTable = new javax.swing.JLabel();
-        tableScrollPane = new javax.swing.JScrollPane();
-        productTable = new javax.swing.JTable();
-        pnlHomeScreen = new javax.swing.JPanel();
-        lblHomeBackground = new javax.swing.JLabel();
+        pnlUpdateModeSelected = new javax.swing.JPanel();
+        lblAddAProduct1 = new javax.swing.JLabel();
+        tfProductName1 = new javax.swing.JTextField();
+        tfProductPrice1 = new javax.swing.JTextField();
+        tfProductId1 = new javax.swing.JTextField();
+        tfProductWeight1 = new javax.swing.JTextField();
+        tfProductUnit1 = new javax.swing.JTextField();
+        tfProductQuantity1 = new javax.swing.JTextField();
+        tfProductSupplier1 = new javax.swing.JTextField();
+        btnUpdateIt = new javax.swing.JButton();
+        lblProductName1 = new javax.swing.JLabel();
+        lblProductPrice1 = new javax.swing.JLabel();
+        lblProductQuantity1 = new javax.swing.JLabel();
+        lblProductId1 = new javax.swing.JLabel();
+        lblProductWeight1 = new javax.swing.JLabel();
+        lblProductUnit1 = new javax.swing.JLabel();
+        lblProductSupplier1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("mainScreenFrame");
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(40, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -204,234 +217,82 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlSearchBar.setBackground(new java.awt.Color(255, 255, 255));
         pnlSearchBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlSearchBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBackArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/backArrow.png"))); // NOI18N
+        pnlSearchBar.add(lblBackArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 1, 26, 38));
 
         lblFrontArrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/frontArrow.png"))); // NOI18N
+        pnlSearchBar.add(lblFrontArrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 7, 26, 26));
 
         lblRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/refresh.png"))); // NOI18N
+        pnlSearchBar.add(lblRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 1, 26, 38));
+        pnlSearchBar.add(textFieldSearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 7, 490, -1));
 
-        javax.swing.GroupLayout pnlSearchBarLayout = new javax.swing.GroupLayout(pnlSearchBar);
-        pnlSearchBar.setLayout(pnlSearchBarLayout);
-        pnlSearchBarLayout.setHorizontalGroup(
-            pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSearchBarLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblBackArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblFrontArrow, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textFieldSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 1138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+        groupSort.setBackground(new java.awt.Color(255, 255, 255));
+
+        comboBoxSortingAlgorithm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selection Sort", "Insertion Sort", "Merge Sort" }));
+
+        comboBoxSortingParameter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Price", "Name", "Quantity", "Weight" }));
+
+        btnSortIt.setText("Sort");
+        btnSortIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortItActionPerformed(evt);
+            }
+        });
+
+        lblSortBy.setText("Sort By :");
+
+        btnSortingToggler.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
+        btnSortingToggler.setText("↓↑");
+
+        btnSearchIt.setText("Search");
+
+        javax.swing.GroupLayout groupSortLayout = new javax.swing.GroupLayout(groupSort);
+        groupSort.setLayout(groupSortLayout);
+        groupSortLayout.setHorizontalGroup(
+            groupSortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(groupSortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(groupSortLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(btnSearchIt)
+                    .addGap(13, 13, 13)
+                    .addComponent(lblSortBy)
+                    .addGap(11, 11, 11)
+                    .addComponent(comboBoxSortingParameter, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(6, 6, 6)
+                    .addComponent(comboBoxSortingAlgorithm, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(btnSortingToggler, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(btnSortIt)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        pnlSearchBarLayout.setVerticalGroup(
-            pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblBackArrow, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pnlSearchBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlSearchBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFrontArrow, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                    .addGroup(pnlSearchBarLayout.createSequentialGroup()
-                        .addComponent(textFieldSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+        groupSortLayout.setVerticalGroup(
+            groupSortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(groupSortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(groupSortLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(groupSortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnSearchIt)
+                        .addGroup(groupSortLayout.createSequentialGroup()
+                            .addGap(3, 3, 3)
+                            .addComponent(lblSortBy))
+                        .addComponent(comboBoxSortingParameter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxSortingAlgorithm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSortingToggler, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSortIt))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        pnlSearchBar.add(groupSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 6, 650, 30));
 
         getContentPane().add(pnlSearchBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 40));
 
         pnlAllScreens.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlControlScreen.setBackground(new java.awt.Color(148, 183, 58));
-        pnlControlScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        lblControlScreenMode.setText("Mode:");
-
-        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Mode", "ADD", "UPDATE", "REMOVE" }));
-        comboBoxModeSelector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxModeSelectorActionPerformed(evt);
-            }
-        });
-
-        pnlAllControlPanels.setBackground(new java.awt.Color(148, 183, 58));
-        pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblAddAProduct2.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
-        lblAddAProduct2.setText("REMOVE a Product");
-
-        lblProductName2.setText("Product Id");
-
-        btnRemoveIt.setText("REMOVE IT");
-        btnRemoveIt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveItActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
-        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
-        pnlRemoveModeSelectedLayout.setHorizontalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addContainerGap(358, Short.MAX_VALUE)
-                .addComponent(lblAddAProduct2)
-                .addGap(366, 366, 366))
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(506, 506, 506)
-                .addComponent(lblProductName2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(472, 472, 472)
-                .addGroup(pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRemoveIt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tfProductName2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        pnlRemoveModeSelectedLayout.setVerticalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(lblAddAProduct2)
-                .addGap(123, 123, 123)
-                .addComponent(lblProductName2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(btnRemoveIt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
-
-        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        pnlUpdateModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblAddAProduct1.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
-        lblAddAProduct1.setText("UPDATE a Product");
-        pnlUpdateModeSelected.add(lblAddAProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
-        pnlUpdateModeSelected.add(tfProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
-        pnlUpdateModeSelected.add(tfProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
-        pnlUpdateModeSelected.add(tfProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
-        pnlUpdateModeSelected.add(tfProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 140, 48));
-        pnlUpdateModeSelected.add(tfProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 140, 48));
-        pnlUpdateModeSelected.add(tfProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
-        pnlUpdateModeSelected.add(tfProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 160, 40));
-
-        btnUpdateIt.setText("UPDATE IT");
-        btnUpdateIt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateItActionPerformed(evt);
-            }
-        });
-        pnlUpdateModeSelected.add(btnUpdateIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 176, 57));
-
-        lblProductName1.setText("Name");
-        pnlUpdateModeSelected.add(lblProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
-
-        lblProductPrice1.setText("Price");
-        pnlUpdateModeSelected.add(lblProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
-
-        lblProductQuantity1.setText("Quantity");
-        pnlUpdateModeSelected.add(lblProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
-
-        lblProductId1.setText("Product ID");
-        pnlUpdateModeSelected.add(lblProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
-
-        lblProductWeight1.setText("Weight");
-        pnlUpdateModeSelected.add(lblProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
-
-        lblProductUnit1.setText("Unit of Weight");
-        pnlUpdateModeSelected.add(lblProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
-
-        lblProductSupplier1.setText("Supplier");
-        pnlUpdateModeSelected.add(lblProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
-
-        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        pnlAddModeSelected.setBackground(new java.awt.Color(255, 255, 255));
-        pnlAddModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblAddAProduct.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
-        lblAddAProduct.setText("ADD a Product");
-        pnlAddModeSelected.add(lblAddAProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
-        pnlAddModeSelected.add(tfProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
-        pnlAddModeSelected.add(tfProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
-        pnlAddModeSelected.add(tfProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
-        pnlAddModeSelected.add(tfProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 140, 48));
-        pnlAddModeSelected.add(tfProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
-        pnlAddModeSelected.add(tfProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 140, 48));
-        pnlAddModeSelected.add(tfProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 140, 48));
-
-        btnAddIt.setText("ADD IT");
-        btnAddIt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddItActionPerformed(evt);
-            }
-        });
-        pnlAddModeSelected.add(btnAddIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 176, 57));
-
-        lblProductName.setText("Name");
-        pnlAddModeSelected.add(lblProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
-
-        lblProductPrice.setText("Price");
-        pnlAddModeSelected.add(lblProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
-
-        lblProductQuantity.setText("Quantity");
-        pnlAddModeSelected.add(lblProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
-
-        lblProductId.setText("Product ID");
-        pnlAddModeSelected.add(lblProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
-
-        lblProductWeight.setText("Weight");
-        pnlAddModeSelected.add(lblProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
-
-        lblProductUnit.setText("Unit of Weight");
-        pnlAddModeSelected.add(lblProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
-
-        lblProductSupplier.setText("Supplier");
-        pnlAddModeSelected.add(lblProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
-
-        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        pnlNoModeSelected.setBackground(new java.awt.Color(148, 183, 58));
-        pnlNoModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblNoModeSelectedBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/noModeSelectedBg.png"))); // NOI18N
-        pnlNoModeSelected.add(lblNoModeSelectedBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 490));
-
-        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
-        pnlControlScreen.setLayout(pnlControlScreenLayout);
-        pnlControlScreenLayout.setHorizontalGroup(
-            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblControlScreenMode)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
-        );
-        pnlControlScreenLayout.setVerticalGroup(
-            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblControlScreenMode)
-                    .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-
-        pnlAllScreens.add(pnlControlScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
 
         pnlProductScreen.setBackground(new java.awt.Color(255, 255, 255));
         pnlProductScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -496,6 +357,233 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlAllScreens.add(pnlHomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
 
+        pnlControlScreen.setBackground(new java.awt.Color(148, 183, 58));
+        pnlControlScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        lblControlScreenMode.setForeground(new java.awt.Color(255, 255, 255));
+        lblControlScreenMode.setText("Mode:");
+
+        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Mode", "ADD", "UPDATE", "REMOVE" }));
+        comboBoxModeSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxModeSelectorActionPerformed(evt);
+            }
+        });
+
+        pnlAllControlPanels.setBackground(new java.awt.Color(148, 183, 58));
+        pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlNoModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+        pnlNoModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNoModeSelectedBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/noModeSelectedBg.png"))); // NOI18N
+        pnlNoModeSelected.add(lblNoModeSelectedBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 490));
+
+        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        pnlRemoveModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+
+        lblRemoveAProduct.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
+        lblRemoveAProduct.setForeground(new java.awt.Color(255, 255, 255));
+        lblRemoveAProduct.setText("REMOVE a Product");
+
+        lblProductName2.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductName2.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductName2.setText("Product Id");
+
+        btnRemoveIt.setText("REMOVE IT");
+        btnRemoveIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveItActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
+        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
+        pnlRemoveModeSelectedLayout.setHorizontalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addContainerGap(341, Short.MAX_VALUE)
+                .addComponent(lblRemoveAProduct)
+                .addGap(366, 366, 366))
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGroup(pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                        .addGap(527, 527, 527)
+                        .addComponent(lblProductName2))
+                    .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                        .addGap(499, 499, 499)
+                        .addGroup(pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRemoveIt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlRemoveModeSelectedLayout.setVerticalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(lblRemoveAProduct)
+                .addGap(89, 89, 89)
+                .addComponent(lblProductName2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(btnRemoveIt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+
+        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        pnlAddModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+        pnlAddModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddAProduct.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
+        lblAddAProduct.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddAProduct.setText("ADD a Product");
+        pnlAddModeSelected.add(lblAddAProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
+        pnlAddModeSelected.add(tfProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 140, 48));
+        pnlAddModeSelected.add(tfProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 140, 48));
+        pnlAddModeSelected.add(tfProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 140, 48));
+
+        btnAddIt.setText("ADD IT");
+        btnAddIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddItActionPerformed(evt);
+            }
+        });
+        pnlAddModeSelected.add(btnAddIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 176, 57));
+
+        lblProductName.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductName.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductName.setText("Name");
+        pnlAddModeSelected.add(lblProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
+
+        lblProductPrice.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductPrice.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductPrice.setText("Price");
+        pnlAddModeSelected.add(lblProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
+
+        lblProductQuantity.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductQuantity.setText("Quantity");
+        pnlAddModeSelected.add(lblProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
+
+        lblProductId.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductId.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductId.setText("Product ID");
+        pnlAddModeSelected.add(lblProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        lblProductWeight.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductWeight.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductWeight.setText("Weight");
+        pnlAddModeSelected.add(lblProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
+
+        lblProductUnit.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductUnit.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductUnit.setText("Unit of Weight");
+        pnlAddModeSelected.add(lblProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
+
+        lblProductSupplier.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductSupplier.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductSupplier.setText("Supplier");
+        pnlAddModeSelected.add(lblProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
+
+        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        pnlUpdateModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+        pnlUpdateModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddAProduct1.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
+        lblAddAProduct1.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddAProduct1.setText("UPDATE a Product");
+        pnlUpdateModeSelected.add(lblAddAProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
+        pnlUpdateModeSelected.add(tfProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 140, 48));
+        pnlUpdateModeSelected.add(tfProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 140, 48));
+        pnlUpdateModeSelected.add(tfProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 160, 40));
+
+        btnUpdateIt.setText("UPDATE IT");
+        btnUpdateIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateItActionPerformed(evt);
+            }
+        });
+        pnlUpdateModeSelected.add(btnUpdateIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 176, 57));
+
+        lblProductName1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductName1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductName1.setText("Name");
+        pnlUpdateModeSelected.add(lblProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
+
+        lblProductPrice1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductPrice1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductPrice1.setText("Price");
+        pnlUpdateModeSelected.add(lblProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
+
+        lblProductQuantity1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductQuantity1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductQuantity1.setText("Quantity");
+        pnlUpdateModeSelected.add(lblProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
+
+        lblProductId1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductId1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductId1.setText("Product ID");
+        pnlUpdateModeSelected.add(lblProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        lblProductWeight1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductWeight1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductWeight1.setText("Weight");
+        pnlUpdateModeSelected.add(lblProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+
+        lblProductUnit1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductUnit1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductUnit1.setText("Unit of Weight");
+        pnlUpdateModeSelected.add(lblProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
+
+        lblProductSupplier1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductSupplier1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductSupplier1.setText("Supplier");
+        pnlUpdateModeSelected.add(lblProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
+
+        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
+        pnlControlScreen.setLayout(pnlControlScreenLayout);
+        pnlControlScreenLayout.setHorizontalGroup(
+            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblControlScreenMode)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        pnlControlScreenLayout.setVerticalGroup(
+            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblControlScreenMode)
+                    .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        pnlAllScreens.add(pnlControlScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
+
         getContentPane().add(pnlAllScreens, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1280, 630));
 
         pack();
@@ -506,19 +594,24 @@ public class MainScreen extends javax.swing.JFrame {
         pnlHomeScreen.setVisible(true);
         pnlProductScreen.setVisible(false);
         pnlControlScreen.setVisible(false);
+        textFieldSearchBar.setFocusable(false);
+        groupSort.setVisible(false);
     }//GEN-LAST:event_pnlHomeTabMouseClicked
- 
+
     private void pnlProductTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlProductTabMouseClicked
         // TODO add your handling code here:
         pnlHomeScreen.setVisible(false);
         pnlProductScreen.setVisible(true);
         pnlControlScreen.setVisible(false);
+        textFieldSearchBar.setFocusable(true);
+        groupSort.setVisible(true);
     }//GEN-LAST:event_pnlProductTabMouseClicked
 
     private void comboBoxModeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxModeSelectorActionPerformed
         // TODO add your handling code here:
         String selectedOption = (String) comboBoxModeSelector.getSelectedItem();
-                
+        textFieldSearchBar.setFocusable(false);
+
         // hide all panels
         pnlNoModeSelected.setVisible(false);
         pnlRemoveModeSelected.setVisible(false);
@@ -548,260 +641,43 @@ public class MainScreen extends javax.swing.JFrame {
         pnlHomeScreen.setVisible(false);
         pnlProductScreen.setVisible(false);
         pnlControlScreen.setVisible(true);
+        textFieldSearchBar.setFocusable(false);
+        groupSort.setVisible(false);
     }//GEN-LAST:event_pnlControlTabMouseClicked
 
     private void btnAddItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItActionPerformed
         // TODO add your handling code here:
-        
+
         // Helper method to reset the border of a JTextField
         resetBorders();
 
-        // Validate Product Supplier
-        if (tfProductSupplier.getText().trim().isEmpty()) {
-            tfProductSupplier.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductSupplier.requestFocus();
-            return;
-        }
+        //call validation method
+        Validation addValidator = new Validation();
+        addValidator.addButtonValidation(tfProductSupplier, tfProductQuantity, tfProductUnit, tfProductWeight, tfProductId, tfProductPrice, tfProductName, productList, productTable);
 
-        // Validate Product Quantity
-        try {
-            int quantity = Integer.parseInt(tfProductQuantity.getText().trim());
-            if (quantity <= 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            tfProductQuantity.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Quantity must be a positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductQuantity.requestFocus();
-            return;
-        }
-
-        // Validate Product Unit
-        if (tfProductUnit.getText().trim().isEmpty()) {
-            tfProductUnit.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Unit cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductUnit.requestFocus();
-            return;
-        }
-
-        // Validate Product Weight
-        try {
-            double weight = Double.parseDouble(tfProductWeight.getText().trim());
-            if (weight <= 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            tfProductWeight.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Weight must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductWeight.requestFocus();
-            return;
-        }
-
-        // Validate Product ID
-        if (tfProductId.getText().trim().isEmpty()) {
-            tfProductId.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductId.requestFocus();
-            return;
-        }
-
-        // Validate Product Price
-        try {
-            double price = Double.parseDouble(tfProductPrice.getText().trim());
-            if (price <= 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            tfProductPrice.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Price must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductPrice.requestFocus();
-            return;
-        }
-
-        // Validate Product Name
-        if (tfProductName.getText().trim().isEmpty()) {
-            tfProductName.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Name cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductName.requestFocus();
-            return;
-        }
-
-        // If all validations pass
-        JOptionPane.showMessageDialog(this, "Product added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);    
-        
-        try {
-            int productId = Integer.parseInt(tfProductId.getText().trim());
-            String productName = tfProductName.getText().trim();
-            String weight = tfProductWeight.getText().trim();
-            String weightUnit = tfProductUnit.getText().trim();
-            String supplier = tfProductSupplier.getText().trim();
-            double price = Double.parseDouble(tfProductPrice.getText().trim());
-            int quantity = Integer.parseInt(tfProductQuantity.getText().trim());
-
-            // Create ProductModel object and register it
-            ProductModel product = new ProductModel(productId, productName, weight, weightUnit, supplier, price, quantity);
-            registerProduct(product);
-            refreshProductTable();
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid input. Please ensure numeric fields are correctly filled.", "Input Error", JOptionPane.ERROR_MESSAGE);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    
     }//GEN-LAST:event_btnAddItActionPerformed
 
     private void btnUpdateItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateItActionPerformed
         // TODO add your handling code here:
-        
+
         // Helper method to reset the border of a JTextField
         resetBordersUpdate();
 
-        // Validate Product Supplier
-        if (tfProductSupplier1.getText().trim().isEmpty()) {
-            tfProductSupplier1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductSupplier1.requestFocus();
-            return;
-        }
-
-        // Validate Product Quantity
-        try {
-            int quantity = Integer.parseInt(tfProductQuantity1.getText().trim());
-            if (quantity <= 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            tfProductQuantity1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Quantity must be a positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductQuantity1.requestFocus();
-            return;
-        }
-
-        // Validate Product Unit
-        if (tfProductUnit1.getText().trim().isEmpty()) {
-            tfProductUnit1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Unit cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductUnit1.requestFocus();
-            return;
-        }
-
-        // Validate Product Weight
-        try {
-            double weight = Double.parseDouble(tfProductWeight1.getText().trim());
-            if (weight <= 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            tfProductWeight1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Weight must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductWeight1.requestFocus();
-            return;
-        }
-
-        // Validate Product ID
-        if (tfProductId1.getText().trim().isEmpty()) {
-            tfProductId1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductId1.requestFocus();
-            return;
-        }
-
-        // Validate Product Price
-        try {
-            double price = Double.parseDouble(tfProductPrice1.getText().trim());
-            if (price <= 0) {
-                throw new NumberFormatException();
-            }
-        } catch (NumberFormatException e) {
-            tfProductPrice1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Price must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductPrice1.requestFocus();
-            return;
-        }
-
-        // Validate Product Name
-        if (tfProductName1.getText().trim().isEmpty()) {
-            tfProductName1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product Name cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductName1.requestFocus();
-            return;
-        }
-
-        // If all validations pass
-        try {
-            int productId = Integer.parseInt(tfProductId1.getText().trim());
-            String productName = tfProductName1.getText().trim();
-            String weight = tfProductWeight1.getText().trim();
-            String weightUnit = tfProductUnit1.getText().trim();
-            String supplier = tfProductSupplier1.getText().trim();
-            double price = Double.parseDouble(tfProductPrice1.getText().trim());
-            int quantity = Integer.parseInt(tfProductQuantity1.getText().trim());
-
-            // Update the product in the product list or table
-            ProductModel product = findProductById(productId); // Helper method to find the product by ID
-            if (product != null) {
-                product.setProductName(productName);
-                product.setWeight(weight);
-                product.setWeightUnit(weightUnit);
-                product.setSupplier(supplier);
-                product.setPrice(price);
-                product.setQuantity(quantity);
-
-                refreshProductTable(); // Refresh the table view after updating
-                JOptionPane.showMessageDialog(this, "Product updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Product with the given ID not found.", "Update Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Invalid input. Please ensure numeric fields are correctly filled.", "Input Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } 
+        //call validation methods
+        Validation updateValidator = new Validation();
+        updateValidator.updateButtonValidation(tfProductSupplier1, tfProductQuantity1, tfProductUnit1, tfProductWeight1, tfProductId1, tfProductPrice1, tfProductName1, productList, productTable);
     }//GEN-LAST:event_btnUpdateItActionPerformed
 
     private void btnRemoveItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveItActionPerformed
         // TODO add your handling code here:
-            
-        tfProductName2.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
-        // Validate that the ID is entered
-        if (tfProductName2.getText().trim().isEmpty()) {
-            tfProductName2.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductName2.requestFocus();
-            return;
-        }
-
-        try {
-            // Parse the Product ID
-            int productId = Integer.parseInt(tfProductName2.getText().trim());
-
-            // Search and remove the product by ID
-            boolean productRemoved = false;
-            for (int i = 0; i < productList.size(); i++) {
-                if (productList.get(i).getProductId() == productId) {
-                    productList.remove(i);
-                    productRemoved = true;
-                    break;
-                }
-            }
-
-            if (productRemoved) {
-                refreshProductTable(); // Refresh the table to reflect changes
-                JOptionPane.showMessageDialog(this, "Product removed successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Product with the given ID not found.", "Removal Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (NumberFormatException e) {
-            tfProductName2.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(this, "Invalid Product ID. Please enter a valid integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            tfProductName2.requestFocus();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        Validation removeValidator = new Validation();
+        removeValidator.removeButtonValidation(tfProductName2, productList, productTable);
     }//GEN-LAST:event_btnRemoveItActionPerformed
+
+    private void btnSortItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortItActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSortItActionPerformed
 
     private void resetBordersUpdate() {
         // Reset borders of all text fields in the update form to default
@@ -812,17 +688,8 @@ public class MainScreen extends javax.swing.JFrame {
         tfProductId1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         tfProductPrice1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         tfProductName1.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-    }   
-
-    private ProductModel findProductById(int productId) {
-        for (ProductModel product : productList) {
-            if (product.getProductId() == productId) {
-                return product;
-            }
-        }
-        return null;
     }
-    
+
     private void resetBorders() {
         // Reset borders of all text fields to default
         tfProductSupplier.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -833,40 +700,27 @@ public class MainScreen extends javax.swing.JFrame {
         tfProductPrice.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         tfProductName.setBorder(BorderFactory.createLineBorder(Color.GRAY));
     }
-    
+
     // Method to add product data and populate the table
     private void registerProduct(ProductModel item) {
         productList.add(item);
         DefaultTableModel model = (DefaultTableModel) productTable.getModel();
         model.addRow(new Object[]{
-            item.getProductId(),item.getProductName(), item.getPrice(), item.getQuantity(), item.getSupplier(), item.getWeight(), item.getWeightUnit()
+            item.getProductId(), item.getProductName(), item.getPrice(), item.getQuantity(), item.getSupplier(), item.getWeight(), item.getWeightUnit()
         });
     }
-    
-    private void refreshProductTable() {
-        DefaultTableModel model = (DefaultTableModel) productTable.getModel();
-        model.setRowCount(0); // Clear existing rows
 
-        for (ProductModel item : productList) {
-            model.addRow(new Object[]{
-            item.getProductId(),item.getProductName(), item.getPrice(), item.getQuantity(), item.getSupplier(), item.getWeight(), item.getWeightUnit()
-        });
-        }
-        
-        System.out.println("inside refresh table");
-    }
-    
     // Method to initialize data, including student list and table
     private void initializeData() {
         productList = new LinkedList();
-        registerProduct(new ProductModel(1,"Rice", "20", "kg", "Newari", 2500, 10));
+        registerProduct(new ProductModel(1, "Rice", "20", "kg", "Newari", 2500, 10));
         registerProduct(new ProductModel(2, "Wheat Flour", "5", "kg", "Organic Farms", 200, 5));
         registerProduct(new ProductModel(3, "Sugar", "1", "kg", "Sweet Delight", 80, 20));
         registerProduct(new ProductModel(4, "Milk", "1", "Litre", "Dairy Fresh", 50, 15));
         registerProduct(new ProductModel(5, "Eggs", "1", "Dozen", "Happy Hens", 80, 30));
+
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
@@ -905,14 +759,19 @@ public class MainScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddIt;
     private javax.swing.JButton btnRemoveIt;
+    private javax.swing.JButton btnSearchIt;
+    private javax.swing.JButton btnSortIt;
+    private javax.swing.JToggleButton btnSortingToggler;
     private javax.swing.JButton btnUpdateIt;
     private javax.swing.JComboBox<String> comboBoxModeSelector;
+    private javax.swing.JComboBox<String> comboBoxSortingAlgorithm;
+    private javax.swing.JComboBox<String> comboBoxSortingParameter;
+    private javax.swing.JPanel groupSort;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblAddAProduct;
     private javax.swing.JLabel lblAddAProduct1;
-    private javax.swing.JLabel lblAddAProduct2;
     private javax.swing.JLabel lblBackArrow;
     private javax.swing.JLabel lblControlScreenMode;
     private javax.swing.JLabel lblFrontArrow;
@@ -935,6 +794,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblProductWeight;
     private javax.swing.JLabel lblProductWeight1;
     private javax.swing.JLabel lblRefresh;
+    private javax.swing.JLabel lblRemoveAProduct;
+    private javax.swing.JLabel lblSortBy;
     private javax.swing.JPanel pnlAddModeSelected;
     private javax.swing.JPanel pnlAllControlPanels;
     private javax.swing.JPanel pnlAllScreens;
