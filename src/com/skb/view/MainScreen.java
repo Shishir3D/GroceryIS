@@ -1,6 +1,7 @@
 package com.skb.view;
 
 import com.skb.controller.algorithms.InsertionSort;
+import com.skb.controller.algorithms.MergeSort;
 import com.skb.controller.algorithms.SelectionSort;
 import com.skb.model.ProductModel;
 import com.skb.util.Validation;
@@ -689,11 +690,10 @@ public class MainScreen extends javax.swing.JFrame {
                 SelectionSort.SelectionSort(productList, selectedSortingParameter, isAscending, productTable);
                 break;
             case "Insertion Sort":
-                System.out.println("Inside Insertion Sort");
                 InsertionSort.InsertionSort(productList, selectedSortingParameter, isAscending, productTable);
                 break;
             case "Merge Sort":
-                pnlAddModeSelected.setVisible(true);
+                MergeSort.MergeSort(productList, selectedSortingAlgorithm, isAscending, productTable);
                 break;
         }
     }//GEN-LAST:event_btnSortItActionPerformed
