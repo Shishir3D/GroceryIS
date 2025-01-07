@@ -1,5 +1,6 @@
 package com.skb.view;
 
+import com.skb.controller.algorithms.BinarySearch;
 import com.skb.controller.algorithms.InsertionSort;
 import com.skb.controller.algorithms.MergeSort;
 import com.skb.controller.algorithms.SelectionSort;
@@ -18,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class MainScreen extends javax.swing.JFrame {
 
     private List<ProductModel> productList;
+    private List<ProductModel> productListCopy;
 
     /**
      * Creates new form MainScreen
@@ -252,6 +254,11 @@ public class MainScreen extends javax.swing.JFrame {
         btnSortingToggler.setText("↓↑");
 
         btnSearchIt.setText("Search");
+        btnSearchIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchItActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout groupSortLayout = new javax.swing.GroupLayout(groupSort);
         groupSort.setLayout(groupSortLayout);
@@ -697,6 +704,12 @@ public class MainScreen extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_btnSortItActionPerformed
+
+    private void btnSearchItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchItActionPerformed
+        // TODO add your handling code here:
+        String searchName = textFieldSearchBar.getText();
+        BinarySearch.BinarySearch(productList, productTable, searchName);
+    }//GEN-LAST:event_btnSearchItActionPerformed
 
     private void resetBordersUpdate() {
         // Reset borders of all text fields in the update form to default
