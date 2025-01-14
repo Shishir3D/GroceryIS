@@ -750,6 +750,7 @@ public class MainScreen extends javax.swing.JFrame {
         registerProduct(new ProductModel(3, "Sugar", "1", "kg", "Sweet Delight", 80, 20));
         registerProduct(new ProductModel(4, "Milk", "1", "Litre", "Dairy Fresh", 50, 15));
         registerProduct(new ProductModel(5, "Eggs", "1", "Dozen", "Happy Hens", 80, 30));
+        registerProduct(new ProductModel(6, "Rice", "2", "kg", "Newari", 2500, 10));
 
     }
 
