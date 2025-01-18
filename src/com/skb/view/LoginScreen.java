@@ -1,4 +1,5 @@
 package com.skb.view;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,9 +14,9 @@ public class LoginScreen extends javax.swing.JFrame {
      */
     public LoginScreen() {
         initComponents();
-        
+
         //My Code
-        setTitle("Login Screen");    
+        setTitle("Login Screen");
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
     }
 
@@ -28,8 +29,6 @@ public class LoginScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlLoadingScreen = new javax.swing.JPanel();
-        jProgressBar1 = new javax.swing.JProgressBar();
         pnlLoginScreenForegroundWhiteRectangle = new javax.swing.JPanel();
         lblLoginScreenLoginText = new javax.swing.JLabel();
         lblLoginScreenUsername = new javax.swing.JLabel();
@@ -40,6 +39,9 @@ public class LoginScreen extends javax.swing.JFrame {
         lblLoginScreenForgotPassword = new javax.swing.JLabel();
         lblLoginScreenPasswordIsIncorrect = new javax.swing.JLabel();
         lblLoginScreenUsernameIsIncorrect = new javax.swing.JLabel();
+        pnlLoadingScreen = new javax.swing.JPanel();
+        lblLoggingIn = new javax.swing.JLabel();
+        progressBar = new javax.swing.JProgressBar();
         lblLoginScreenBgImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,14 +50,6 @@ public class LoginScreen extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlLoadingScreen.setMaximumSize(new java.awt.Dimension(1280, 720));
-        pnlLoadingScreen.setMinimumSize(new java.awt.Dimension(1280, 720));
-        pnlLoadingScreen.setPreferredSize(new java.awt.Dimension(1280, 720));
-        pnlLoadingScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlLoadingScreen.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 940, 40));
-
-        getContentPane().add(pnlLoadingScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlLoginScreenForegroundWhiteRectangle.setBackground(new java.awt.Color(255, 255, 255));
         pnlLoginScreenForegroundWhiteRectangle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,7 +78,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
         lblLoginScreenForgotPassword.setForeground(new java.awt.Color(153, 153, 153));
         lblLoginScreenForgotPassword.setText("forgot password?");
-        pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenForgotPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, -1));
+        pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenForgotPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, -1));
 
         lblLoginScreenPasswordIsIncorrect.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
         lblLoginScreenPasswordIsIncorrect.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,6 +92,18 @@ public class LoginScreen extends javax.swing.JFrame {
 
         getContentPane().add(pnlLoginScreenForegroundWhiteRectangle, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 380, 530));
 
+        pnlLoadingScreen.setMaximumSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setMinimumSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setPreferredSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLoggingIn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblLoggingIn.setText("Logging in.....");
+        pnlLoadingScreen.add(lblLoggingIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 500, -1, -1));
+        pnlLoadingScreen.add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 940, 40));
+
+        getContentPane().add(pnlLoadingScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         lblLoginScreenBgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/loginScreenBgImage.jpg"))); // NOI18N
         lblLoginScreenBgImage.setText(" ");
         getContentPane().add(lblLoginScreenBgImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -107,13 +113,13 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void btnLoginScreenLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginScreenLoginActionPerformed
         // Sample data for validation (replace this with your actual data source)
-        String validUsername = "admin";
-        String validPassword = "admin";
+        String validUsername = "";
+        String validPassword = "";
 
         // Retrieve input from username and password fields
         String enteredUsername = textFieldLoginScreenUsername.getText();
         String enteredPassword = textFieldLoginScreenPassword.getText();
-        
+
         // Reset error labels
         lblLoginScreenUsernameIsIncorrect.setText("");
         lblLoginScreenPasswordIsIncorrect.setText("");
@@ -134,15 +140,43 @@ public class LoginScreen extends javax.swing.JFrame {
         if (enteredUsername.equals(validUsername) && enteredPassword.equals(validPassword)) {
             // Logic for successful login (navigate to the next screen or show a success message)
             javax.swing.JOptionPane.showMessageDialog(this, "Login successful!", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            
-            // Open MainScreen JFrame
-            MainScreen mainScreen = new MainScreen();
-            mainScreen.setVisible(true);
 
-            // Close the Login Screen JFrame
-            this.dispose(); // Dispose of the current JFrame
+            pnlLoginScreenForegroundWhiteRectangle.setVisible(false);
+            startProgress();
+
         }
     }//GEN-LAST:event_btnLoginScreenLoginActionPerformed
+
+    private void startProgress() {
+        pnlLoadingScreen.setVisible(true);
+        javax.swing.SwingWorker<Void, Integer> worker = new javax.swing.SwingWorker<>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                for (int i = 0; i <= 100; i++) {
+                    Thread.sleep(30); // Simulated delay for progress bar
+                    publish(i); // Publish progress
+                }
+                return null;
+            }
+
+            @Override
+            protected void process(java.util.List<Integer> chunks) {
+                int progress = chunks.get(chunks.size() - 1);
+                progressBar.setValue(progress);
+            }
+
+            @Override
+            protected void done() {
+                MainScreen mainScreen = new MainScreen();
+                mainScreen.setVisible(true);
+
+                // Close the Login Screen JFrame
+                LoginScreen.this.setVisible(false); // Dispose of the current JFrame
+                LoginScreen.this.dispose(); // Optional: Free up resources
+            }
+        };
+        worker.execute(); // Start the worker thread
+    }
 
     /**
      * @param args the command line arguments
@@ -170,19 +204,19 @@ public class LoginScreen extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoginScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-            MainScreen mainScreen = new MainScreen();
-            mainScreen.setVisible(true);
+
         /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new LoginScreen().setVisible(true);
-//        }
-//        });
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+
+                new LoginScreen().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoginScreenLogin;
-    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JLabel lblLoggingIn;
     private javax.swing.JLabel lblLoginScreenBgImage;
     private javax.swing.JLabel lblLoginScreenForgotPassword;
     private javax.swing.JLabel lblLoginScreenLoginText;
@@ -192,6 +226,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblLoginScreenUsernameIsIncorrect;
     private javax.swing.JPanel pnlLoadingScreen;
     private javax.swing.JPanel pnlLoginScreenForegroundWhiteRectangle;
+    private javax.swing.JProgressBar progressBar;
     private javax.swing.JTextField textFieldLoginScreenPassword;
     private javax.swing.JTextField textFieldLoginScreenUsername;
     // End of variables declaration//GEN-END:variables
