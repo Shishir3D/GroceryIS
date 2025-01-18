@@ -28,6 +28,8 @@ public class LoginScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlLoadingScreen = new javax.swing.JPanel();
+        jProgressBar1 = new javax.swing.JProgressBar();
         pnlLoginScreenForegroundWhiteRectangle = new javax.swing.JPanel();
         lblLoginScreenLoginText = new javax.swing.JLabel();
         lblLoginScreenUsername = new javax.swing.JLabel();
@@ -46,6 +48,14 @@ public class LoginScreen extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlLoadingScreen.setMaximumSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setMinimumSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setPreferredSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlLoadingScreen.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 940, 40));
+
+        getContentPane().add(pnlLoadingScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlLoginScreenForegroundWhiteRectangle.setBackground(new java.awt.Color(255, 255, 255));
         pnlLoginScreenForegroundWhiteRectangle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -172,6 +182,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoginScreenLogin;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel lblLoginScreenBgImage;
     private javax.swing.JLabel lblLoginScreenForgotPassword;
     private javax.swing.JLabel lblLoginScreenLoginText;
@@ -179,6 +190,7 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JLabel lblLoginScreenPasswordIsIncorrect;
     private javax.swing.JLabel lblLoginScreenUsername;
     private javax.swing.JLabel lblLoginScreenUsernameIsIncorrect;
+    private javax.swing.JPanel pnlLoadingScreen;
     private javax.swing.JPanel pnlLoginScreenForegroundWhiteRectangle;
     private javax.swing.JTextField textFieldLoginScreenPassword;
     private javax.swing.JTextField textFieldLoginScreenUsername;
