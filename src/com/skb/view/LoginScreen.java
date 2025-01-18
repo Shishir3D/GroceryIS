@@ -16,6 +16,7 @@ public class LoginScreen extends javax.swing.JFrame {
         initComponents();
 
         //My Code
+        pnlLoadingScreen.setVisible(false);
         setTitle("Login Screen");
         setLocationRelativeTo(null); // this method display the JFrame to center position of a screen
     }
@@ -29,6 +30,10 @@ public class LoginScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlLoadingScreen = new javax.swing.JPanel();
+        lblLoggingIn = new javax.swing.JLabel();
+        progressBar = new javax.swing.JProgressBar();
+        lblLoadingImage = new javax.swing.JLabel();
         pnlLoginScreenForegroundWhiteRectangle = new javax.swing.JPanel();
         lblLoginScreenLoginText = new javax.swing.JLabel();
         lblLoginScreenUsername = new javax.swing.JLabel();
@@ -39,9 +44,6 @@ public class LoginScreen extends javax.swing.JFrame {
         lblLoginScreenForgotPassword = new javax.swing.JLabel();
         lblLoginScreenPasswordIsIncorrect = new javax.swing.JLabel();
         lblLoginScreenUsernameIsIncorrect = new javax.swing.JLabel();
-        pnlLoadingScreen = new javax.swing.JPanel();
-        lblLoggingIn = new javax.swing.JLabel();
-        progressBar = new javax.swing.JProgressBar();
         lblLoginScreenBgImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,6 +52,27 @@ public class LoginScreen extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlLoadingScreen.setBackground(new java.awt.Color(148, 183, 58));
+        pnlLoadingScreen.setMaximumSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setMinimumSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setPreferredSize(new java.awt.Dimension(1280, 720));
+        pnlLoadingScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLoggingIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblLoggingIn.setForeground(new java.awt.Color(255, 255, 255));
+        lblLoggingIn.setText("Logging in.....");
+        pnlLoadingScreen.add(lblLoggingIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 500, -1, -1));
+
+        progressBar.setBackground(new java.awt.Color(102, 255, 102));
+        progressBar.setForeground(new java.awt.Color(0, 255, 153));
+        progressBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pnlLoadingScreen.add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 940, 40));
+
+        lblLoadingImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/loadingImage.png"))); // NOI18N
+        pnlLoadingScreen.add(lblLoadingImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
+
+        getContentPane().add(pnlLoadingScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pnlLoginScreenForegroundWhiteRectangle.setBackground(new java.awt.Color(255, 255, 255));
         pnlLoginScreenForegroundWhiteRectangle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,6 +91,7 @@ public class LoginScreen extends javax.swing.JFrame {
         pnlLoginScreenForegroundWhiteRectangle.add(textFieldLoginScreenUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 260, 50));
         pnlLoginScreenForegroundWhiteRectangle.add(textFieldLoginScreenPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 260, 50));
 
+        btnLoginScreenLogin.setBackground(new java.awt.Color(254, 254, 254));
         btnLoginScreenLogin.setText("LOGIN");
         btnLoginScreenLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,18 +115,6 @@ public class LoginScreen extends javax.swing.JFrame {
         pnlLoginScreenForegroundWhiteRectangle.add(lblLoginScreenUsernameIsIncorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         getContentPane().add(pnlLoginScreenForegroundWhiteRectangle, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 380, 530));
-
-        pnlLoadingScreen.setMaximumSize(new java.awt.Dimension(1280, 720));
-        pnlLoadingScreen.setMinimumSize(new java.awt.Dimension(1280, 720));
-        pnlLoadingScreen.setPreferredSize(new java.awt.Dimension(1280, 720));
-        pnlLoadingScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblLoggingIn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblLoggingIn.setText("Logging in.....");
-        pnlLoadingScreen.add(lblLoggingIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 500, -1, -1));
-        pnlLoadingScreen.add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 940, 40));
-
-        getContentPane().add(pnlLoadingScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         lblLoginScreenBgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/loginScreenBgImage.jpg"))); // NOI18N
         lblLoginScreenBgImage.setText(" ");
@@ -216,6 +228,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoginScreenLogin;
+    private javax.swing.JLabel lblLoadingImage;
     private javax.swing.JLabel lblLoggingIn;
     private javax.swing.JLabel lblLoginScreenBgImage;
     private javax.swing.JLabel lblLoginScreenForgotPassword;
