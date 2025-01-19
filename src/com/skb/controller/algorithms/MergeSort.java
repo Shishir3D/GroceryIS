@@ -7,40 +7,21 @@ import java.util.List;
 import javax.swing.JTable;
 
 /**
+ * Implementation of Merge Sort for sorting ProductModel objects.
  *
- * @author shishir
+ * @author Shishir
  */
 public class MergeSort {
 
-    public static void MergeSort(List<ProductModel> productList, String sortBy, boolean isAscending, JTable productTable) {
-        if (productList.size() < 2) {
-            return;
-        }
-
-        int mid = productList.size() / 2;
-
-        // Create copies of the left and right halves
-        List<ProductModel> left = new ArrayList<>(productList.subList(0, mid));
-        List<ProductModel> right = new ArrayList<>(productList.subList(mid, productList.size()));
-
-        MergeSort(left, sortBy, isAscending, null); // Recursive call for left half
-        MergeSort(right, sortBy, isAscending, null); // Recursive call for right half
-
-        merge(productList, left, right, sortBy, isAscending);
-
-        // Update the table after the final merge
-        if (productTable != null) {
-            TableUpdator sortedTable = new TableUpdator();
-            sortedTable.refreshProductTable(productTable, productList);
-        }
-    }
-
+    // Merges two sublists into the main list.
     private static void merge(List<ProductModel> products, List<ProductModel> left, List<ProductModel> right, String sortBy, boolean isAscending) {
         int i = 0, j = 0, k = 0;
 
+        // Merge while both sublists have elements
         while (i < left.size() && j < right.size()) {
             boolean condition = false;
 
+            // Determine condition based on sortBy parameter
             if (sortBy.equalsIgnoreCase("price")) {
                 if (isAscending) {
                     condition = left.get(i).getPrice() <= right.get(j).getPrice();
@@ -69,19 +50,54 @@ public class MergeSort {
                 }
             }
 
+            // Add the smaller or larger element to the main list
             if (condition) {
-                products.set(k++, left.get(i++));
+                products.set(k, left.get(i));
+                i++;
             } else {
-                products.set(k++, right.get(j++));
+                products.set(k, right.get(j));
+                j++;
             }
+            k++;
         }
 
+        // Add remaining elements from the left list, if any
         while (i < left.size()) {
-            products.set(k++, left.get(i++));
+            products.set(k, left.get(i));
+            i++;
+            k++;
         }
 
+        // Add remaining elements from the right list, if any
         while (j < right.size()) {
-            products.set(k++, right.get(j++));
+            products.set(k, right.get(j));
+            j++;
+            k++;
+        }
+    }
+
+    // Recursive function for Merge Sort
+    public static void sort(List<ProductModel> productList, String sortBy, boolean isAscending, JTable productTable) {
+        if (productList.size() < 2) {
+            return; // Base case: single element is already sorted
+        }
+
+        // Split the list into two halves
+        int mid = productList.size() / 2;
+        List<ProductModel> left = new ArrayList<>(productList.subList(0, mid));
+        List<ProductModel> right = new ArrayList<>(productList.subList(mid, productList.size()));
+
+        // Recursively sort both halves
+        sort(left, sortBy, isAscending, null);
+        sort(right, sortBy, isAscending, null);
+
+        // Merge the sorted halves
+        merge(productList, left, right, sortBy, isAscending);
+
+        // Update the table after the final merge
+        if (productTable != null) {
+            TableUpdator tableUpdator = new TableUpdator();
+            tableUpdator.refreshProductTable(productTable, productList);
         }
     }
 }

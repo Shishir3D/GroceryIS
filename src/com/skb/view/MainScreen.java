@@ -131,13 +131,14 @@ public class MainScreen extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlTopBar.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTopBar.setBackground(new java.awt.Color(204, 204, 204));
         pnlTopBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlTopBar.setMaximumSize(new java.awt.Dimension(1280, 59));
         pnlTopBar.setMinimumSize(new java.awt.Dimension(1280, 59));
         pnlTopBar.setPreferredSize(new java.awt.Dimension(1280, 59));
         pnlTopBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnlHomeTab.setBackground(new java.awt.Color(255, 255, 255));
         pnlHomeTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlHomeTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,6 +167,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlTopBar.add(pnlHomeTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 30));
 
+        pnlProductTab.setBackground(new java.awt.Color(255, 255, 255));
         pnlProductTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlProductTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,6 +196,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlTopBar.add(pnlProductTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 150, -1));
 
+        pnlControlTab.setBackground(new java.awt.Color(255, 255, 255));
         pnlControlTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pnlControlTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -727,17 +730,14 @@ public class MainScreen extends javax.swing.JFrame {
         String selectedSortingAlgorithm = (String) comboBoxSortingAlgorithm.getSelectedItem();
         boolean isAscending = !btnSortingToggler.isSelected();
 
-        switch (selectedSortingAlgorithm) {
-            case "Selection Sort":
-                SelectionSort.SelectionSort(productList, selectedSortingParameter, isAscending, productTable);
-                break;
-            case "Insertion Sort":
-                InsertionSort.InsertionSort(productList, selectedSortingParameter, isAscending, productTable);
-                break;
-            case "Merge Sort":
-                MergeSort.MergeSort(productList, selectedSortingAlgorithm, isAscending, productTable);
-                break;
+        if ("Selection Sort".equals(selectedSortingAlgorithm)) {
+            SelectionSort.SelectionSort(productList, selectedSortingParameter, isAscending, productTable);
+        } else if ("Insertion Sort".equals(selectedSortingAlgorithm)) {
+            InsertionSort.InsertionSort(productList, selectedSortingParameter, isAscending, productTable);
+        } else if ("Merge Sort".equals(selectedSortingAlgorithm)) {
+            MergeSort.sort(productList, selectedSortingParameter, isAscending, productTable);
         }
+
     }//GEN-LAST:event_btnSortItActionPerformed
 
     private void btnSearchItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchItActionPerformed
