@@ -50,8 +50,8 @@ public class SelectionSort {
                         }
                     }
                 } else if (sortBy.equalsIgnoreCase("weight")) {
-                    int weightJ = Integer.parseInt(productList.get(j).getWeight());
-                    int weightSelected = Integer.parseInt(productList.get(selectedIndex).getWeight());
+                    float weightJ = Float.parseFloat(productList.get(j).getWeight());
+                    float weightSelected = Float.parseFloat(productList.get(selectedIndex).getWeight());
                     if (isAscending) {
                         if (weightJ < weightSelected) {
                             condition = true;

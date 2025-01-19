@@ -34,8 +34,12 @@ public class MainScreen extends javax.swing.JFrame {
 
         //make searchbar unfocusable
         textFieldSearchBar.setFocusable(false);
+
+        // configue visibility of panels        
+        groupSort.setVisible(false);
         pnlProductScreen.setVisible(false);
         pnlControlScreen.setVisible(false);
+
     }
 
     /**
@@ -236,11 +240,14 @@ public class MainScreen extends javax.swing.JFrame {
 
         groupSort.setBackground(new java.awt.Color(255, 255, 255));
 
+        comboBoxSortingAlgorithm.setBackground(new java.awt.Color(255, 255, 254));
         comboBoxSortingAlgorithm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selection Sort", "Insertion Sort", "Merge Sort" }));
 
+        comboBoxSortingParameter.setBackground(new java.awt.Color(255, 255, 254));
         comboBoxSortingParameter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Price", "Name", "Quantity", "Weight" }));
         comboBoxSortingParameter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        btnSortIt.setBackground(new java.awt.Color(255, 255, 254));
         btnSortIt.setText("Sort");
         btnSortIt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,9 +257,11 @@ public class MainScreen extends javax.swing.JFrame {
 
         lblSortBy.setText("Sort By :");
 
+        btnSortingToggler.setBackground(new java.awt.Color(255, 255, 254));
         btnSortingToggler.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         btnSortingToggler.setText("↓↑");
 
+        btnSearchIt.setBackground(new java.awt.Color(255, 255, 254));
         btnSearchIt.setText("Search");
         btnSearchIt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,17 +314,24 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlAllScreens.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlProductScreen.setBackground(new java.awt.Color(255, 255, 255));
+        pnlProductScreen.setBackground(new java.awt.Color(148, 183, 58));
         pnlProductScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblProductScreenProductsTable.setFont(new java.awt.Font("Liberation Sans", 0, 48)); // NOI18N
+        lblProductScreenProductsTable.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
+        lblProductScreenProductsTable.setForeground(new java.awt.Color(255, 255, 255));
         lblProductScreenProductsTable.setText("Products Table");
-        pnlProductScreen.add(lblProductScreenProductsTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 49, -1, -1));
+        pnlProductScreen.add(lblProductScreenProductsTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, -1, -1));
 
+        tableScrollPane.setBackground(new java.awt.Color(148, 183, 58));
+        tableScrollPane.setForeground(new java.awt.Color(255, 255, 255));
         tableScrollPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tableScrollPane.setEnabled(false);
         tableScrollPane.setFocusable(false);
+        tableScrollPane.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
 
+        productTable.setBackground(new java.awt.Color(148, 183, 58));
+        productTable.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        productTable.setForeground(new java.awt.Color(255, 255, 255));
         productTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -332,6 +348,16 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        productTable.setColumnSelectionAllowed(true);
+        productTable.setFocusable(false);
+        productTable.setGridColor(new java.awt.Color(0, 204, 0));
+        productTable.setRequestFocusEnabled(false);
+        productTable.setRowHeight(40);
+        productTable.setSelectionBackground(new java.awt.Color(148, 183, 58));
+        productTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        productTable.setShowGrid(true);
+        productTable.getTableHeader().setResizingAllowed(false);
+        productTable.getTableHeader().setReorderingAllowed(false);
         tableScrollPane.setViewportView(productTable);
         if (productTable.getColumnModel().getColumnCount() > 0) {
             productTable.getColumnModel().getColumn(0).setResizable(false);
@@ -616,6 +642,7 @@ public class MainScreen extends javax.swing.JFrame {
         pnlControlScreen.setVisible(false);
         textFieldSearchBar.setFocusable(true);
         groupSort.setVisible(true);
+
     }//GEN-LAST:event_pnlProductTabMouseClicked
 
     private void comboBoxModeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxModeSelectorActionPerformed
@@ -654,6 +681,10 @@ public class MainScreen extends javax.swing.JFrame {
         pnlControlScreen.setVisible(true);
         textFieldSearchBar.setFocusable(false);
         groupSort.setVisible(false);
+        pnlNoModeSelected.setVisible(true);
+        pnlRemoveModeSelected.setVisible(false);
+        pnlAddModeSelected.setVisible(false);
+        pnlUpdateModeSelected.setVisible(false);
     }//GEN-LAST:event_pnlControlTabMouseClicked
 
     private void btnAddItActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItActionPerformed
@@ -751,6 +782,12 @@ public class MainScreen extends javax.swing.JFrame {
         registerProduct(new ProductModel(4, "Milk", "1", "Litre", "Dairy Fresh", 50, 15));
         registerProduct(new ProductModel(5, "Eggs", "1", "Dozen", "Happy Hens", 80, 30));
         registerProduct(new ProductModel(6, "Rice", "2", "kg", "Newari", 2500, 10));
+        registerProduct(new ProductModel(7, "Rice", "20", "kg", "Newari", 2500, 10));
+        registerProduct(new ProductModel(8, "Wheat Flour", "5", "kg", "Organic Farms", 200, 5));
+        registerProduct(new ProductModel(9, "Sugar", "1", "kg", "Sweet Delight", 80, 20));
+        registerProduct(new ProductModel(10, "Milk", "1", "Litre", "Dairy Fresh", 50, 15));
+        registerProduct(new ProductModel(11, "Eggs", "1", "Dozen", "Happy Hens", 80, 30));
+        registerProduct(new ProductModel(12, "Rice", "2", "kg", "Newari", 2500, 10));
 
     }
 

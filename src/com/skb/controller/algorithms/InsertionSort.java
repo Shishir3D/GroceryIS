@@ -50,8 +50,8 @@ public class InsertionSort {
                         }
                     }
                 } else if (sortBy.equalsIgnoreCase("weight")) {
-                    int weightJ = Integer.parseInt(productList.get(j).getWeight());
-                    int weightKey = Integer.parseInt(key.getWeight());
+                    float weightJ = Float.parseFloat(productList.get(j).getWeight());
+                    float weightKey = Float.parseFloat(key.getWeight());
                     if (isAscending) {
                         if (weightJ > weightKey) {
                             condition = true;

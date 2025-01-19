@@ -60,8 +60,8 @@ public class MergeSort {
                     condition = left.get(i).getQuantity() >= right.get(j).getQuantity();
                 }
             } else if (sortBy.equalsIgnoreCase("weight")) {
-                int weightLeft = Integer.parseInt(left.get(i).getWeight());
-                int weightRight = Integer.parseInt(right.get(j).getWeight());
+                float weightLeft = Float.parseFloat(left.get(i).getWeight());
+                float weightRight = Float.parseFloat(right.get(j).getWeight());
                 if (isAscending) {
                     condition = weightLeft <= weightRight;
                 } else {
