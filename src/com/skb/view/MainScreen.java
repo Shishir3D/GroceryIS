@@ -71,12 +71,6 @@ public class MainScreen extends javax.swing.JFrame {
         btnSortingToggler = new javax.swing.JToggleButton();
         btnSearchIt = new javax.swing.JButton();
         pnlAllScreens = new javax.swing.JPanel();
-        pnlProductScreen = new javax.swing.JPanel();
-        lblProductScreenProductsTable = new javax.swing.JLabel();
-        tableScrollPane = new javax.swing.JScrollPane();
-        productTable = new javax.swing.JTable();
-        pnlHomeScreen = new javax.swing.JPanel();
-        lblHomeBackground = new javax.swing.JLabel();
         pnlControlScreen = new javax.swing.JPanel();
         lblControlScreenMode = new javax.swing.JLabel();
         comboBoxModeSelector = new javax.swing.JComboBox<>();
@@ -122,6 +116,12 @@ public class MainScreen extends javax.swing.JFrame {
         lblProductWeight1 = new javax.swing.JLabel();
         lblProductUnit1 = new javax.swing.JLabel();
         lblProductSupplier1 = new javax.swing.JLabel();
+        pnlProductScreen = new javax.swing.JPanel();
+        lblProductScreenProductsTable = new javax.swing.JLabel();
+        tableScrollPane = new javax.swing.JScrollPane();
+        productTable = new javax.swing.JTable();
+        pnlHomeScreen = new javax.swing.JPanel();
+        lblHomeBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("mainScreenFrame");
@@ -314,6 +314,237 @@ public class MainScreen extends javax.swing.JFrame {
 
         pnlAllScreens.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pnlControlScreen.setBackground(new java.awt.Color(148, 183, 58));
+        pnlControlScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        lblControlScreenMode.setForeground(new java.awt.Color(255, 255, 255));
+        lblControlScreenMode.setText("Mode:");
+
+        comboBoxModeSelector.setBackground(new java.awt.Color(255, 255, 254));
+        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Mode", "ADD", "UPDATE", "REMOVE" }));
+        comboBoxModeSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxModeSelectorActionPerformed(evt);
+            }
+        });
+
+        pnlAllControlPanels.setBackground(new java.awt.Color(148, 183, 58));
+        pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlNoModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+        pnlNoModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNoModeSelectedBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/noModeSelectedBg.png"))); // NOI18N
+        pnlNoModeSelected.add(lblNoModeSelectedBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 490));
+
+        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        pnlRemoveModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+
+        lblRemoveAProduct.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
+        lblRemoveAProduct.setForeground(new java.awt.Color(255, 255, 255));
+        lblRemoveAProduct.setText("REMOVE a Product");
+
+        lblProductName2.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductName2.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductName2.setText("Product Id");
+
+        btnRemoveIt.setBackground(new java.awt.Color(255, 255, 254));
+        btnRemoveIt.setText("REMOVE IT");
+        btnRemoveIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveItActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
+        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
+        pnlRemoveModeSelectedLayout.setHorizontalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addContainerGap(341, Short.MAX_VALUE)
+                .addComponent(lblRemoveAProduct)
+                .addGap(366, 366, 366))
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGroup(pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                        .addGap(527, 527, 527)
+                        .addComponent(lblProductName2))
+                    .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                        .addGap(499, 499, 499)
+                        .addGroup(pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRemoveIt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlRemoveModeSelectedLayout.setVerticalGroup(
+            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(lblRemoveAProduct)
+                .addGap(89, 89, 89)
+                .addComponent(lblProductName2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(btnRemoveIt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+
+        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        pnlAddModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+        pnlAddModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddAProduct.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
+        lblAddAProduct.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddAProduct.setText("ADD a Product");
+        pnlAddModeSelected.add(lblAddAProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
+        pnlAddModeSelected.add(tfProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 140, 48));
+        pnlAddModeSelected.add(tfProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
+        pnlAddModeSelected.add(tfProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 140, 48));
+        pnlAddModeSelected.add(tfProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 140, 48));
+
+        btnAddIt.setBackground(new java.awt.Color(255, 255, 254));
+        btnAddIt.setText("ADD IT");
+        btnAddIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddItActionPerformed(evt);
+            }
+        });
+        pnlAddModeSelected.add(btnAddIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 176, 57));
+
+        lblProductName.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductName.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductName.setText("Name");
+        pnlAddModeSelected.add(lblProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
+
+        lblProductPrice.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductPrice.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductPrice.setText("Price");
+        pnlAddModeSelected.add(lblProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
+
+        lblProductQuantity.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductQuantity.setText("Quantity");
+        pnlAddModeSelected.add(lblProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
+
+        lblProductId.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductId.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductId.setText("Product ID");
+        pnlAddModeSelected.add(lblProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        lblProductWeight.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductWeight.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductWeight.setText("Weight");
+        pnlAddModeSelected.add(lblProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
+
+        lblProductUnit.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductUnit.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductUnit.setText("Unit of Weight");
+        pnlAddModeSelected.add(lblProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
+
+        lblProductSupplier.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductSupplier.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductSupplier.setText("Supplier");
+        pnlAddModeSelected.add(lblProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
+
+        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        pnlUpdateModeSelected.setBackground(new java.awt.Color(148, 183, 58));
+        pnlUpdateModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblAddAProduct1.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
+        lblAddAProduct1.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddAProduct1.setText("UPDATE a Product");
+        pnlUpdateModeSelected.add(lblAddAProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
+        pnlUpdateModeSelected.add(tfProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 140, 48));
+        pnlUpdateModeSelected.add(tfProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 140, 48));
+        pnlUpdateModeSelected.add(tfProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
+        pnlUpdateModeSelected.add(tfProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 160, 40));
+
+        btnUpdateIt.setBackground(new java.awt.Color(255, 255, 254));
+        btnUpdateIt.setText("UPDATE IT");
+        btnUpdateIt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateItActionPerformed(evt);
+            }
+        });
+        pnlUpdateModeSelected.add(btnUpdateIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 176, 57));
+
+        lblProductName1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductName1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductName1.setText("Name");
+        pnlUpdateModeSelected.add(lblProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
+
+        lblProductPrice1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductPrice1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductPrice1.setText("Price");
+        pnlUpdateModeSelected.add(lblProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
+
+        lblProductQuantity1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductQuantity1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductQuantity1.setText("Quantity");
+        pnlUpdateModeSelected.add(lblProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
+
+        lblProductId1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductId1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductId1.setText("Product ID");
+        pnlUpdateModeSelected.add(lblProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        lblProductWeight1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductWeight1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductWeight1.setText("Weight");
+        pnlUpdateModeSelected.add(lblProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
+
+        lblProductUnit1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductUnit1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductUnit1.setText("Unit of Weight");
+        pnlUpdateModeSelected.add(lblProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
+
+        lblProductSupplier1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
+        lblProductSupplier1.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductSupplier1.setText("Supplier");
+        pnlUpdateModeSelected.add(lblProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
+
+        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
+
+        javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
+        pnlControlScreen.setLayout(pnlControlScreenLayout);
+        pnlControlScreenLayout.setHorizontalGroup(
+            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblControlScreenMode)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        pnlControlScreenLayout.setVerticalGroup(
+            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlControlScreenLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblControlScreenMode)
+                    .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        pnlAllScreens.add(pnlControlScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
+
         pnlProductScreen.setBackground(new java.awt.Color(148, 183, 58));
         pnlProductScreen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -393,233 +624,6 @@ public class MainScreen extends javax.swing.JFrame {
         );
 
         pnlAllScreens.add(pnlHomeScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
-
-        pnlControlScreen.setBackground(new java.awt.Color(148, 183, 58));
-        pnlControlScreen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        lblControlScreenMode.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        lblControlScreenMode.setForeground(new java.awt.Color(255, 255, 255));
-        lblControlScreenMode.setText("Mode:");
-
-        comboBoxModeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Mode", "ADD", "UPDATE", "REMOVE" }));
-        comboBoxModeSelector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxModeSelectorActionPerformed(evt);
-            }
-        });
-
-        pnlAllControlPanels.setBackground(new java.awt.Color(148, 183, 58));
-        pnlAllControlPanels.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlNoModeSelected.setBackground(new java.awt.Color(148, 183, 58));
-        pnlNoModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblNoModeSelectedBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/skb/resoruces/noModeSelectedBg.png"))); // NOI18N
-        pnlNoModeSelected.add(lblNoModeSelectedBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 490));
-
-        pnlAllControlPanels.add(pnlNoModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        pnlRemoveModeSelected.setBackground(new java.awt.Color(148, 183, 58));
-
-        lblRemoveAProduct.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
-        lblRemoveAProduct.setForeground(new java.awt.Color(255, 255, 255));
-        lblRemoveAProduct.setText("REMOVE a Product");
-
-        lblProductName2.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductName2.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductName2.setText("Product Id");
-
-        btnRemoveIt.setText("REMOVE IT");
-        btnRemoveIt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveItActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlRemoveModeSelectedLayout = new javax.swing.GroupLayout(pnlRemoveModeSelected);
-        pnlRemoveModeSelected.setLayout(pnlRemoveModeSelectedLayout);
-        pnlRemoveModeSelectedLayout.setHorizontalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addContainerGap(341, Short.MAX_VALUE)
-                .addComponent(lblRemoveAProduct)
-                .addGap(366, 366, 366))
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGroup(pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                        .addGap(527, 527, 527)
-                        .addComponent(lblProductName2))
-                    .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                        .addGap(499, 499, 499)
-                        .addGroup(pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRemoveIt, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlRemoveModeSelectedLayout.setVerticalGroup(
-            pnlRemoveModeSelectedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRemoveModeSelectedLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(lblRemoveAProduct)
-                .addGap(89, 89, 89)
-                .addComponent(lblProductName2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfProductName2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(btnRemoveIt, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
-
-        pnlAllControlPanels.add(pnlRemoveModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        pnlAddModeSelected.setBackground(new java.awt.Color(148, 183, 58));
-        pnlAddModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblAddAProduct.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
-        lblAddAProduct.setForeground(new java.awt.Color(255, 255, 255));
-        lblAddAProduct.setText("ADD a Product");
-        pnlAddModeSelected.add(lblAddAProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
-        pnlAddModeSelected.add(tfProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
-        pnlAddModeSelected.add(tfProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
-        pnlAddModeSelected.add(tfProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
-        pnlAddModeSelected.add(tfProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 140, 48));
-        pnlAddModeSelected.add(tfProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
-        pnlAddModeSelected.add(tfProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 140, 48));
-        pnlAddModeSelected.add(tfProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 140, 48));
-
-        btnAddIt.setText("ADD IT");
-        btnAddIt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddItActionPerformed(evt);
-            }
-        });
-        pnlAddModeSelected.add(btnAddIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 176, 57));
-
-        lblProductName.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductName.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductName.setText("Name");
-        pnlAddModeSelected.add(lblProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
-
-        lblProductPrice.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductPrice.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductPrice.setText("Price");
-        pnlAddModeSelected.add(lblProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
-
-        lblProductQuantity.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductQuantity.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductQuantity.setText("Quantity");
-        pnlAddModeSelected.add(lblProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
-
-        lblProductId.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductId.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductId.setText("Product ID");
-        pnlAddModeSelected.add(lblProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
-
-        lblProductWeight.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductWeight.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductWeight.setText("Weight");
-        pnlAddModeSelected.add(lblProductWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
-
-        lblProductUnit.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductUnit.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductUnit.setText("Unit of Weight");
-        pnlAddModeSelected.add(lblProductUnit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
-
-        lblProductSupplier.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductSupplier.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductSupplier.setText("Supplier");
-        pnlAddModeSelected.add(lblProductSupplier, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
-
-        pnlAllControlPanels.add(pnlAddModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        pnlUpdateModeSelected.setBackground(new java.awt.Color(148, 183, 58));
-        pnlUpdateModeSelected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblAddAProduct1.setFont(new java.awt.Font("Liberation Sans", 1, 48)); // NOI18N
-        lblAddAProduct1.setForeground(new java.awt.Color(255, 255, 255));
-        lblAddAProduct1.setText("UPDATE a Product");
-        pnlUpdateModeSelected.add(lblAddAProduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 39, -1, -1));
-        pnlUpdateModeSelected.add(tfProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 185, 140, 48));
-        pnlUpdateModeSelected.add(tfProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 185, 140, 48));
-        pnlUpdateModeSelected.add(tfProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 185, 140, 48));
-        pnlUpdateModeSelected.add(tfProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 140, 48));
-        pnlUpdateModeSelected.add(tfProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 140, 48));
-        pnlUpdateModeSelected.add(tfProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 185, 140, 48));
-        pnlUpdateModeSelected.add(tfProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 160, 40));
-
-        btnUpdateIt.setText("UPDATE IT");
-        btnUpdateIt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateItActionPerformed(evt);
-            }
-        });
-        pnlUpdateModeSelected.add(btnUpdateIt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 176, 57));
-
-        lblProductName1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductName1.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductName1.setText("Name");
-        pnlUpdateModeSelected.add(lblProductName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 161, -1, -1));
-
-        lblProductPrice1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductPrice1.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductPrice1.setText("Price");
-        pnlUpdateModeSelected.add(lblProductPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 161, -1, -1));
-
-        lblProductQuantity1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductQuantity1.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductQuantity1.setText("Quantity");
-        pnlUpdateModeSelected.add(lblProductQuantity1, new org.netbeans.lib.awtextra.AbsoluteConstraints(798, 161, -1, -1));
-
-        lblProductId1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductId1.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductId1.setText("Product ID");
-        pnlUpdateModeSelected.add(lblProductId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
-
-        lblProductWeight1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductWeight1.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductWeight1.setText("Weight");
-        pnlUpdateModeSelected.add(lblProductWeight1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, -1, -1));
-
-        lblProductUnit1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductUnit1.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductUnit1.setText("Unit of Weight");
-        pnlUpdateModeSelected.add(lblProductUnit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
-
-        lblProductSupplier1.setFont(new java.awt.Font("Liberation Sans", 1, 15)); // NOI18N
-        lblProductSupplier1.setForeground(new java.awt.Color(255, 255, 255));
-        lblProductSupplier1.setText("Supplier");
-        pnlUpdateModeSelected.add(lblProductSupplier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, -1, -1));
-
-        pnlAllControlPanels.add(pnlUpdateModeSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 490));
-
-        javax.swing.GroupLayout pnlControlScreenLayout = new javax.swing.GroupLayout(pnlControlScreen);
-        pnlControlScreen.setLayout(pnlControlScreenLayout);
-        pnlControlScreenLayout.setHorizontalGroup(
-            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblControlScreenMode)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
-        );
-        pnlControlScreenLayout.setVerticalGroup(
-            pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlControlScreenLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(pnlControlScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblControlScreenMode)
-                    .addComponent(comboBoxModeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(pnlAllControlPanels, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-
-        pnlAllScreens.add(pnlControlScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 630));
 
         getContentPane().add(pnlAllScreens, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1280, 630));
 
