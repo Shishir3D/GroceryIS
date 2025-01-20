@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *
- * @author shishir
+ * @author 23048645 Shishir Poudel
  */
 public class Validation {
 
@@ -22,7 +22,7 @@ public class Validation {
         // Validate Product Supplier
         if (tfProductSupplier.getText().trim().isEmpty()) {
             tfProductSupplier.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.WARNING_MESSAGE);
             tfProductSupplier.requestFocus();
             return;
         }
@@ -31,11 +31,14 @@ public class Validation {
         try {
             int quantity = Integer.parseInt(tfProductQuantity.getText().trim());
             if (quantity <= 0) {
-                throw new NumberFormatException();
+                tfProductQuantity.setBorder(BorderFactory.createLineBorder(Color.RED));
+                JOptionPane.showMessageDialog(null, "Product Quantity must be a positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                tfProductQuantity.requestFocus();
+                return;
             }
         } catch (NumberFormatException e) {
             tfProductQuantity.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Quantity must be a positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalid input for Product Quantity. Please enter a valid positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductQuantity.requestFocus();
             return;
         }
@@ -43,7 +46,7 @@ public class Validation {
         // Validate Product Unit
         if (tfProductUnit.getText().trim().isEmpty()) {
             tfProductUnit.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Unit cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Product Unit cannot be empty.", "Validation Error", JOptionPane.WARNING_MESSAGE);
             tfProductUnit.requestFocus();
             return;
         }
@@ -52,19 +55,30 @@ public class Validation {
         try {
             double weight = Double.parseDouble(tfProductWeight.getText().trim());
             if (weight <= 0) {
-                throw new NumberFormatException();
+                tfProductWeight.setBorder(BorderFactory.createLineBorder(Color.RED));
+                JOptionPane.showMessageDialog(null, "Product Weight must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                tfProductWeight.requestFocus();
+                return;
             }
         } catch (NumberFormatException e) {
             tfProductWeight.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Weight must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalid input for Product Weight. Please enter a valid positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductWeight.requestFocus();
             return;
         }
 
         // Validate Product ID
-        if (tfProductId.getText().trim().isEmpty()) {
+        try {
+            int productId = Integer.parseInt(tfProductId.getText().trim());
+            if (productId <= 0) {
+                tfProductId.setBorder(BorderFactory.createLineBorder(Color.RED));
+                JOptionPane.showMessageDialog(null, "Product ID must be a positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                tfProductId.requestFocus();
+                return;
+            }
+        } catch (NumberFormatException e) {
             tfProductId.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalid input for Product ID. Please enter a valid positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductId.requestFocus();
             return;
         }
@@ -73,11 +87,14 @@ public class Validation {
         try {
             double price = Double.parseDouble(tfProductPrice.getText().trim());
             if (price <= 0) {
-                throw new NumberFormatException();
+                tfProductPrice.setBorder(BorderFactory.createLineBorder(Color.RED));
+                JOptionPane.showMessageDialog(null, "Product Price must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                tfProductPrice.requestFocus();
+                return;
             }
         } catch (NumberFormatException e) {
             tfProductPrice.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Price must be a positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalid input for Product Price. Please enter a valid positive number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             tfProductPrice.requestFocus();
             return;
         }
@@ -85,14 +102,21 @@ public class Validation {
         // Validate Product Name
         if (tfProductName.getText().trim().isEmpty()) {
             tfProductName.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Name cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Product Name cannot be empty.", "Validation Error", JOptionPane.WARNING_MESSAGE);
             tfProductName.requestFocus();
             return;
         }
 
         for (ProductModel product : productList) {
-            if (product.getProductId() == Integer.parseInt(tfProductId.getText().trim())) {
-                JOptionPane.showMessageDialog(null, "That ID already exists! Enter a new ID.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            try {
+                if (product.getProductId() == Integer.parseInt(tfProductId.getText().trim())) {
+                    JOptionPane.showMessageDialog(null, "That ID already exists! Enter a new ID.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                tfProductId.setBorder(BorderFactory.createLineBorder(Color.RED));
+                JOptionPane.showMessageDialog(null, "Invalid input for Product ID. Please enter a valid positive integer.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                tfProductId.requestFocus();
                 return;
             }
         }
@@ -118,8 +142,6 @@ public class Validation {
             TableUpdator refreshItems = new TableUpdator();
             refreshItems.refreshProductTable(productTable, productList);
 
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Invalid input. Please ensure numeric fields are correctly filled.", "Input Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -129,7 +151,7 @@ public class Validation {
 
         if (tfProductSupplier1.getText().trim().isEmpty()) {
             tfProductSupplier1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Product Supplier cannot be empty.", "Validation Error", JOptionPane.WARNING_MESSAGE);
             tfProductSupplier1.requestFocus();
             return;
         }
@@ -150,7 +172,7 @@ public class Validation {
         // Validate Product Unit
         if (tfProductUnit1.getText().trim().isEmpty()) {
             tfProductUnit1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Unit cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Product Unit cannot be empty.", "Validation Error", JOptionPane.WARNING_MESSAGE);
             tfProductUnit1.requestFocus();
             return;
         }
@@ -171,7 +193,7 @@ public class Validation {
         // Validate Product ID
         if (tfProductId1.getText().trim().isEmpty()) {
             tfProductId1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Product ID cannot be empty.", "Validation Error", JOptionPane.WARNING_MESSAGE);
             tfProductId1.requestFocus();
             return;
         }
@@ -192,7 +214,7 @@ public class Validation {
         // Validate Product Name
         if (tfProductName1.getText().trim().isEmpty()) {
             tfProductName1.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product Name cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Product Name cannot be empty.", "Validation Error", JOptionPane.WARNING_MESSAGE);
             tfProductName1.requestFocus();
             return;
         }
@@ -234,7 +256,7 @@ public class Validation {
 
         if (tfProductName2.getText().trim().isEmpty()) {
             tfProductName2.setBorder(BorderFactory.createLineBorder(Color.RED));
-            JOptionPane.showMessageDialog(null, "Product ID cannot be empty.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Product ID cannot be empty.", "Validation Error", JOptionPane.WARNING_MESSAGE);
             tfProductName2.requestFocus();
             return;
         }

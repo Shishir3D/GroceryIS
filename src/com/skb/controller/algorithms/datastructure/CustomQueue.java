@@ -18,7 +18,7 @@ import java.util.LinkedList;
  * Note: This implementation assumes that the queue operations are not accessed
  * concurrently.</p>
  *
- * @author Shishir
+ * @author 23048645 Shishir Poudel
  */
 public class CustomQueue {
 

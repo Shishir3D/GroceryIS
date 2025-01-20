@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author shishir
+ * @author 23048645 Shishir Poudel
  */
 public class MainScreen extends javax.swing.JFrame {
 

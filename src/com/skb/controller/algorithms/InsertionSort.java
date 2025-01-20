@@ -7,7 +7,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author shishir
+ * @author 23048645 Shishir Poudel
  */
 public class InsertionSort {
 

@@ -5,7 +5,7 @@ import java.awt.*;
 
 /**
  *
- * @author shishir
+ * @author 23048645 Shishir Poudel
  */
 public class LoginScreen extends javax.swing.JFrame {
 
@@ -125,8 +125,8 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void btnLoginScreenLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginScreenLoginActionPerformed
         // Sample data for validation (replace this with your actual data source)
-        String validUsername = "";
-        String validPassword = "";
+        String validUsername = "admin";
+        String validPassword = "admin";
 
         // Retrieve input from username and password fields
         String enteredUsername = textFieldLoginScreenUsername.getText();
@@ -149,7 +149,9 @@ public class LoginScreen extends javax.swing.JFrame {
         }
 
         // Check if both username and password are correct
-        if (enteredUsername.equals(validUsername) && enteredPassword.equals(validPassword)) {
+        if (enteredUsername.trim().equals("") || enteredPassword.trim().equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please do not leave the fields empty.", "Success", javax.swing.JOptionPane.WARNING_MESSAGE);
+        } else if (enteredUsername.equals(validUsername) && enteredPassword.equals(validPassword)) {
             // Logic for successful login (navigate to the next screen or show a success message)
             javax.swing.JOptionPane.showMessageDialog(this, "Login successful!", "Success", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 

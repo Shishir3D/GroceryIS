@@ -1,5 +1,4 @@
 package com.skb.controller.algorithms;
-
 import com.skb.model.ProductModel;
 import com.skb.util.TableUpdator;
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import javax.swing.JTable;
 /**
  * Implementation of Merge Sort for sorting ProductModel objects.
  *
- * @author Shishir
+ * @author 23048645 Shishir Poudel
  */
 public class MergeSort {
 

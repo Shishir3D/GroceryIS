@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author shishir
+ * @author 23048645 Shishir Poudel
  */
 public class TableUpdator {
     // Method to add product data and populate the table

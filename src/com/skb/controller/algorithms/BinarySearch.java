@@ -10,7 +10,7 @@ import javax.swing.JTable;
 /**
  * Binary Search Algorithm using CustomQueue to store all matching results.
  * 
- * @author Shishir
+ * @author 23048645 Shishir Poudel
  */
 public class BinarySearch {
 
